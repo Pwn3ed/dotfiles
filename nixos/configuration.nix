@@ -9,6 +9,7 @@
     ./users.nix
     ./env.nix
     ./network.nix
+    ./fonts.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -16,5 +17,8 @@
 
   services.openssh.enable = true;
 
-  system.stateVersion = "24.05"; # Adjust to match your NixOS version
+  system.stateVersion = "24.05";
 }
+
+# NOTE: commands
+# sudo nixos-rebuild switch
