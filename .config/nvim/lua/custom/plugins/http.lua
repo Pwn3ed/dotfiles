@@ -1,0 +1,11 @@
+return {
+  {
+    dir = '~/Documents/Code/Git/nvim/http.nvim',
+    opts = {
+      print_response = false,
+    },
+    config = function()
+      require 'custom.http'
+    end
+  },
+}
