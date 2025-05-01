@@ -1,0 +1,14 @@
+# Wofi Configuration
+show=drun
+term=alacritty
+width=400
+height=200
+columns=1
+location=center
+prompt=
+allow-markup=true
+allow-images=true
+gtk-dark=true
+hide-scroll=true
+insensitive=true
+parse-search=false
