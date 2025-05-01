@@ -1,0 +1,26 @@
+[window]
+opacity = 1.0
+blur = true
+
+[window.padding]
+x = 10
+y = 10
+
+[colors.primary]
+# background = "#440011"
+background = "#181818"
+
+[font]
+size = 10
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
