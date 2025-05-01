@@ -1,16 +1,17 @@
 #!/bin/bash
 
-## connect to wifi
-## iwctl
-## station wlan0 show
-## station wlan0 connect ssid
-## password
+## WARN: DOWNLOAD SIZE:
+## MINIMAL: ~6-8 GB
+## FULL: ~12-20 GB
 
-## dont need to set pacman keys cuz its done auto
-
-## archinstall
-
-##  INFO: ARCHINSTALL
+##  INFO: ARCH INSTALL
+### # connect to wifi
+### iwctl
+### station wlan0 show
+### station wlan0 connect ssid
+### password
+### ctrl+d # exit iwctl
+### run archinstall
 ### archinstall language: us
 ### keyboard input: br or abnt-2
 ### mirror region: [brazil]
@@ -184,9 +185,21 @@ misc-packages() {
 		sudo pacman -S --noconfirm neofetch
 	fi
 
+	if ask "Install PDF reader (zathura)?"; then
+		sudo pacman -S --noconfirm zathura
+	fi
+
 	# INFO: grim - Screenshot tool and slurp for screen selection (installed from official repo)
 	if ask "Install screenshot tools?"; then
 		sudo pacman -S --noconfirm grim slurp
+	fi
+
+	if ask "Install recording tools (Obs)?"; then
+		sudo pacman -S --noconfirm obs-studio
+	fi
+
+	if ask "Install markdown anotation tool (Obsidian)?"; then
+		sudo pacman -S --noconfirm obsidian
 	fi
 }
 
@@ -197,6 +210,125 @@ fonts() {
 		sudo pacman -S --noconfirm ttf-font-awesome
 		yay -S --noconfirm nerd-fonts-fira-code
 	fi
+}
+
+# ===== DEVELOPER PACKAGES =====
+database() {
+	if ask "Install MySQL (from AUR)?"; then
+		yay -S --noconfirm mysql
+		sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+		sudo systemctl enable mysqld
+		sudo systemctl start mysqld
+	fi
+
+	if ask "Install PostgreSQL?"; then
+		sudo pacman -S --noconfirm postgresql
+		sudo -iu postgres initdb --locale $LANG -D /var/lib/postgres/data
+		sudo systemctl enable postgresql
+		sudo systemctl start postgresql
+	fi
+
+	if ask "Install MongoDB?"; then
+		sudo pacman -S --noconfirm mongodb-bin
+		sudo systemctl enable mongodb
+		sudo systemctl start mongodb
+	fi
+}
+
+game() {
+	if ask "Install Unity Hub?"; then
+		yay -S --noconfirm unityhub
+	fi
+
+	if ask "Install LÖVE (Love2D)?"; then
+		sudo pacman -S --noconfirm love
+	fi
+}
+
+latex() {
+	if ask "Install latexmk?"; then
+		sudo pacman -S --noconfirm latexmk
+	fi
+
+	if ask "Install full TeX Live distribution?"; then
+		sudo pacman -S --noconfirm texlive-most
+	fi
+}
+
+developer-packages() {
+	if ask "Install C development tools?"; then
+		sudo pacman -S --noconfirm gcc gdb make cmake
+	fi
+
+	if ask "Install Java (JDK and Maven)?"; then
+		sudo pacman -S --noconfirm jdk-openjdk maven
+	fi
+
+	if ask "Install Node.js and npm?"; then
+		sudo pacman -S --noconfirm nodejs npm
+	fi
+
+	if ask "Install Go (Golang)?"; then
+		sudo pacman -S --noconfirm go
+	fi
+
+	if ask "Install Python and related tools?"; then
+		sudo pacman -S --noconfirm python python-pip python-virtualenv pipx
+		python -m ensurepip --upgrade
+		pipx ensurepath
+
+		# Add pipx path for Zsh if not already added
+		if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
+			echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+		fi
+	fi
+
+	if ask "Install Laravel (PHP framework)?"; then
+		/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+	fi
+
+	if ask "Install .NET SDK?"; then
+		sudo pacman -S --noconfirm dotnet-sdk
+	fi
+
+	if ask "Install LuaRocks (Lua package manager)?"; then
+		sudo pacman -S --noconfirm luarocks lua
+	fi
+
+	if ask "Install tree-sitter CLI?"; then
+		sudo pacman -S --noconfirm tree-sitter
+	fi
+
+	if ask "Install Docker and Docker Compose?"; then
+		sudo pacman -S --noconfirm docker docker-compose
+		sudo systemctl enable docker
+		sudo systemctl start docker
+		sudo usermod -aG docker $USER
+	fi
+
+	if ask "Install Android Studio?"; then
+		yay -S --noconfirm android-studio
+	fi
+
+	if ask "Install Flutter SDK?"; then
+		yay -S --noconfirm flutter
+	fi
+
+	if ask "Install Rust (via rustup)?"; then
+		sudo pacman -S --noconfirm rustup
+		rustup default stable
+	fi
+
+	if ask "Install Virt-Manager (VM GUI)?"; then
+		sudo pacman -S --noconfirm virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat
+		sudo systemctl enable libvirtd
+		sudo systemctl start libvirtd
+		sudo usermod -aG libvirt,kvm $USER
+	fi
+
+	database
+	game
+	latex
 }
 
 # ===== MAIN SCRIPT START =====
@@ -245,6 +377,8 @@ if ask "Install basic packages (git, curl, etc)?"; then
 		fi
 
 		shell
+
+		developer-packages
 	fi
 fi
 
