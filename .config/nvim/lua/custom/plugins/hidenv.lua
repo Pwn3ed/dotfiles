@@ -1,7 +1,7 @@
 return {
   {
     {
-      dir = '~/Documents/Code/Git/nvim/hidenv.nvim',
+      'leonardo-luz/hidenv.nvim',
       opts = {
         active = true,
       },

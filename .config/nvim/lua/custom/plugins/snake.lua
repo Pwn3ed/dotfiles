@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/Documents/Code/Git/nvim/snake.nvim',
+    'leonardo-luz/snake.nvim',
     opts = {
       map_size = {
         x = 44,

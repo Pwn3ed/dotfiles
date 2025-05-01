@@ -1,7 +1,9 @@
 return {
   {
-    dir = "~/Documents/Code/Git/nvim/wallpaper.nvim/",
+    "leonardo-luz/wallpaper.nvim",
     opts = {
+      command = 'hyprctl hyprpaper wallpaper ",',
+      offset = '"',
       cmd = {
         "WallpaperAdd",
         "WallpaperList",

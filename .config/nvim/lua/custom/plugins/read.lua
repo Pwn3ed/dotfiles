@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/Documents/Code/Git/nvim/read.nvim',
+    'leonardo-luz/read.nvim',
     opts = {
       style = 'float',
       replacement = {

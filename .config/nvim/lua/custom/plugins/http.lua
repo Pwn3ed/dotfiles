@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/Documents/Code/Git/nvim/http.nvim',
+    'leonardo-luz/http.nvim',
     opts = {
       print_response = false,
     },

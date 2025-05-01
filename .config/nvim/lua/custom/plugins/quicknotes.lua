@@ -1,6 +1,6 @@
 return {
   {
-    dir = "~/Documents/Code/Git/nvim/quicknotes.nvim",
+    "leonardo-luz/quicknotes.nvim",
     opts = {
       keys = {
         { 'n', '<leader>nn', '<cmd>QuicknoteNew<cr>',    { desc = "Quick [N]ote [N]ew " } },

@@ -1,6 +1,6 @@
 return {
   {
-    dir = "~/Documents/Code/Git/nvim/present.nvim/",
+    "leonardo-luz/present.nvim",
     opts = {}
   }
 }

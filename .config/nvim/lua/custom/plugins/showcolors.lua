@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/Documents/Code/Git/nvim/showcolors.nvim',
+    'leonardo-luz/showcolors.nvim',
     opts = {
       active = false
     },

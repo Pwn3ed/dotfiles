@@ -1,5 +1,5 @@
 return {
-  dir = '~/Documents/Code/Git/nvim/ai.nvim',
+  'leonardo-luz/ai.nvim',
   opts = {
     ai = 'gemini',
 
