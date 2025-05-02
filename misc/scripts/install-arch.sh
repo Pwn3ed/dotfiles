@@ -24,7 +24,7 @@ essentials=(
   unzip
   ldns
   ufw
-  NetworkManager
+  networkmanager
   git
 )
 
@@ -107,15 +107,13 @@ dev_langs=(
 databases=(
   mariadb
   postgresql
-  mongodb-bin
 )
 
 # === DEV TOOLS ===
 dev_tools=(
   tree-sitter
   love
-  latexmk
-  texlive-most
+  texlive
 )
 
 # === VIRTUALIZATION / CONTAINERS ===
@@ -150,18 +148,20 @@ echo "==> Installing packages via pacman..."
 sudo pacman -S --needed --noconfirm "${all_pacman_pkgs[@]}"
 
 # Set Rust stable as default
-rustup default stable
-
-# Install rust-analyzer
-rustup component add rust-analyzer
+if command -v rustup >/dev/null 2>&1; then
+    echo "==> Setting Rust stable as default..."
+    rustup default stable
+else
+    echo "==> rustup not found. Skipping Rust setup."
+fi
 
 # === AUR PACKAGES ===
 yay_pkgs=(
+  mongodb-bin
   hyprland
   hyprpaper
   waybar
   dolphin
-  nerd-fonts-fira-code
   unityhub
   android-studio
   flutter
@@ -181,41 +181,79 @@ done
 echo "==> Moving config files..."
 SRC="$HOME/dotfiles/.config/"
 DEST="$HOME/.config/"
-mkdir -p "$DEST"
-mv -f "$SRC"* "$DEST"
-mv "$HOME/dotfiles/wallpapers" "$HOME"
+
+if [ -d "$SRC" ]; then
+    mkdir -p "$DEST"
+    mv -f "$SRC"* "$DEST"
+    echo "==> Config files moved to $DEST."
+else
+    echo "==> Source config directory not found: $SRC. Skipping move."
+fi
+
+if [ -d "$HOME/dotfiles/wallpapers" ]; then
+    mv "$HOME/dotfiles/wallpapers" "$HOME"
+    echo "==> Wallpapers moved."
+else
+    echo "==> Wallpapers directory not found. Skipping move."
+fi
 
 # === LARAVEL INSTALLER ===
-echo "==> Installing Laravel PHP setup..."
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+echo "==> Checking for Laravel installation..."
+if command -v laravel >/dev/null 2>&1; then
+  echo "==> Laravel is already installed. Skipping installation."
+else
+  echo "==> Installing Laravel PHP setup..."
+  /bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+fi
 
 # === ENABLE SERVICES ===
 echo "==> Enabling system services..."
 
 sudo systemctl enable --now tlp
-sudo systemctl enable --now mariadb
-sudo systemctl enable --now postgresql
 sudo systemctl enable --now docker
 sudo systemctl enable --now libvirtd
-sudo systemctl enable --now ly.service
+sudo systemctl enable ly.service
 
 # === POST-INSTALL DB SETUP ===
 echo "==> Configuring databases..."
 
-# MariaDB
-sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+# === MariaDB ===
+if ! systemctl is-active --quiet mariadb; then
+    echo "==> Installing and starting MariaDB..."
+    sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+    sudo systemctl enable --now mariadb
+else
+    echo "==> MariaDB is already running. Skipping setup."
+fi
 
-# PostgreSQL
-sudo -iu postgres initdb --locale "$LANG" -D /var/lib/postgres/data
+# === PostgreSQL ===
+if ! systemctl is-active --quiet postgresql; then
+    echo "==> Setting up PostgreSQL..."
+    if [ ! -f /var/lib/postgres/data/PG_VERSION ]; then
+        sudo -iu postgres initdb --locale "$LANG" -D /var/lib/postgres/data
+    else
+        echo "==> PostgreSQL data directory already initialized."
+    fi
+    sudo systemctl enable --now postgresql
+else
+    echo "==> PostgreSQL is already running. Skipping setup."
+fi
 
-# MongoDB
-sudo chown -R mongodb:mongodb /var/lib/mongodb
-sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
-sudo systemctl enable --now mongodb
+# === MongoDB ===
+if ! systemctl is-active --quiet mongodb; then
+    echo "==> Starting MongoDB..."
+    sudo chown -R mongodb:mongodb /var/lib/mongodb
+    # Uncomment if needed
+    # sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+    sudo systemctl enable --now mongodb
+else
+    echo "==> MongoDB is already running. Skipping setup."
+fi
+
 
 # === USER GROUP SETUP ===
 echo "==> Adding user to docker and libvirt groups..."
-sudo usermod -aG libvirt, kvm, docker  "$USER"
+sudo usermod -aG libvirt,kvm,docker "$USER"
 
 # === ZSHRC PATH EXPORT ===
 if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
@@ -231,7 +269,7 @@ echo "1. Edit /etc/libvirt/libvirtd.conf → Uncomment: unix_sock_group"
 echo "2. Update /usr/share/wayland-sessions/hyprland.desktop → Use ~/dotfiles/misc/ly/hyprland.desktop"
 echo "3. Update /etc/ly/config.ini → Use ~/dotfiles/misc/ly/config.ini"
 echo "4. Run the following commands and follow their instructions: "
-echo "   sudo mysql_secure_installation"
-echo "   chsh -s \$(which zsh)"
+echo "   sudo mariadb_secure_installation"
 echo '   sh -c "\$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-echo "5. reboot"
+echo '5. Delete ~/dotfiles and ~/install-arch.sh'
+echo "6. reboot"
