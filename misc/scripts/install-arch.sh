@@ -211,7 +211,7 @@ echo "==> Enabling system services..."
 
 sudo systemctl enable --now tlp
 sudo systemctl enable --now docker
-sudo systemctl enable --now libvirtd
+# sudo systemctl enable --now libvirtd
 sudo systemctl enable ly.service
 
 # === POST-INSTALL DB SETUP ===
