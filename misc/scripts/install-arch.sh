@@ -183,6 +183,7 @@ SRC="$HOME/dotfiles/.config/"
 DEST="$HOME/.config/"
 mkdir -p "$DEST"
 mv -f "$SRC"* "$DEST"
+mv "$HOME/dotfiles/wallpapers" "$HOME"
 
 # === LARAVEL INSTALLER ===
 echo "==> Installing Laravel PHP setup..."
