@@ -21,6 +21,7 @@ fi
 essentials=(
   base-devel
   curl
+  wget
   unzip
   ldns
   ufw
