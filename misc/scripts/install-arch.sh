@@ -3,6 +3,8 @@
 ## WARN: DOWNLOAD SIZE:
 ## MINIMAL: ~6-8 GB
 ## FULL: ~12-20 GB
+## LAST MEDIUM INSTALL: 6.1 GB
+## LAST FULL INSTALL: ~20 GB
 
 ##  INFO: ARCH INSTALL
 ### # connect to wifi
@@ -83,6 +85,7 @@ setup-desktop() {
 	# INFO: LY - Terminal-based display manager (installed from official repo)
 	if ask "Install LY Display Manager?"; then
 		sudo pacman -S --noconfirm ly
+		sudo systemctl enable ly.service
 	fi
 }
 
@@ -169,6 +172,8 @@ misc-packages() {
 	# INFO: TLP - Power management for laptops (installed from official repo)
 	if ask "Install TLP and TLP-RDW (power management)?"; then
 		sudo pacman -S --noconfirm tlp tlp-rdw
+		sudo systemctl enable tlp
+		sudo systemctl start tlp
 	fi
 
 	# INFO: pavucontrol - Audio volume control GUI (installed from official repo)
@@ -186,8 +191,13 @@ misc-packages() {
 		sudo pacman -S --noconfirm neofetch
 	fi
 
+	if ask "Install htop?"; then
+		sudo pacman -S --noconfirm htop
+	fi
+
 	if ask "Install PDF reader (zathura)?"; then
 		sudo pacman -S --noconfirm zathura
+		sudo pacman -S zathura-pdf-mupdf
 	fi
 
 	# INFO: grim - Screenshot tool and slurp for screen selection (installed from official repo)
@@ -210,6 +220,7 @@ fonts() {
 	if ask "Install ttf-font-awesome and ttf-fira-code-font?"; then
 		sudo pacman -S --noconfirm ttf-font-awesome
 		yay -S --noconfirm nerd-fonts-fira-code
+		sudo pacman -S --noconfirm ttf-firacode-nerd
 	fi
 }
 
@@ -279,8 +290,6 @@ developer-packages() {
 
 	if ask "Install Python and related tools?"; then
 		sudo pacman -S --noconfirm python python-pip python-virtualenv pipx
-		python -m ensurepip --upgrade
-		pipx ensurepath
 
 		# Add pipx path for Zsh if not already added
 		if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
@@ -315,9 +324,9 @@ developer-packages() {
 		yay -S --noconfirm android-studio
 	fi
 
-	if ask "Install Flutter SDK?"; then
-		yay -S --noconfirm flutter
-	fi
+	# if ask "Install Flutter SDK?"; then
+	# 	yay -S flutter
+	# fi
 
 	if ask "Install Rust (via rustup)?"; then
 		sudo pacman -S --noconfirm rustup
@@ -351,7 +360,7 @@ fi
 
 # INFO: Install basic tools
 if ask "Install basic packages (git, curl, etc)?"; then
-	sudo pacman -S --noconfirm git gh curl tldr fzf wl-clipboard unzip base-devel ripgrep
+	sudo pacman -S --noconfirm git github-cli curl tldr fzf wl-clipboard unzip base-devel ripgrep
 
 	terminal-emulator
 	start-menu
@@ -384,11 +393,11 @@ if ask "Install basic packages (git, curl, etc)?"; then
 			yay -S --noconfirm neovim-nightly-bin
 		fi
 
-		shell
-
 		if ask "Install developer tools?"; then
 			developer-packages
 		fi
+
+		shell
 	fi
 fi
 
