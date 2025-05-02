@@ -29,6 +29,7 @@
 ### timezone: America/Sao_Paulo
 ### time sync: true
 ### INSTALL
+### reboot
 ### login
 ### nmcli device wifi connect ssid password ********
 
