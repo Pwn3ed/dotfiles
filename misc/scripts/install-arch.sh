@@ -120,12 +120,12 @@ dev_tools=(
 virt=(
   docker
   docker-compose
-  virt-manager
-  qemu
-  libvirt
-  ebtables
-  dnsmasq
-  bridge-utils
+  # virt-manager
+  # qemu
+  # libvirt
+  # ebtables
+  # dnsmasq
+  # bridge-utils
 )
 
 # INSTALL ALL PACMAN PACKAGES
@@ -162,9 +162,9 @@ yay_pkgs=(
   hyprpaper
   waybar
   dolphin
-  unityhub
-  android-studio
-  flutter
+  # unityhub
+  # android-studio
+  # flutter
   neovim-nightly-bin
 )
 
@@ -253,7 +253,9 @@ fi
 
 # === USER GROUP SETUP ===
 echo "==> Adding user to docker and libvirt groups..."
-sudo usermod -aG libvirt,kvm,docker "$USER"
+# sudo usermod -aG libvirt "$USER"
+# sudo usermod -aG kvm "$USER"
+sudo usermod -aG docker "$USER"
 
 # === ZSHRC PATH EXPORT ===
 if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
