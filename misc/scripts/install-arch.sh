@@ -1,122 +1,175 @@
 #!/bin/bash
 
-## WARN: DOWNLOAD SIZE:
-## MINIMAL: ~6-8 GB
-## FULL: ~12-24 GB
-## LAST MEDIUM INSTALL: 6.1 GB
-## LAST FULL INSTALL: ~20 GB
+# Exit on error
+set -e
 
-packages=(
-  github-cli
-  curl
-  tldr
-  fzf
-  wl-clipboard
-  unzip
+echo "==> Updating system..."
+sudo pacman -Syu --noconfirm
+
+echo "==> Installing yay..."
+if ! command -v yay &>/dev/null; then
+  git clone https://aur.archlinux.org/yay-bin.git
+  cd yay-bin || exit
+  makepkg -si --noconfirm
+  cd ..
+  rm -rf yay-bin
+else
+  yay -Suy --noconfirm
+fi
+
+# === SYSTEM ESSENTIALS ===
+essentials=(
   base-devel
-  ripgrep
-  ark
-  ly
-  alacritty
-  wezterm
-  zsh
-  wofi
-  rofi-wayland
+  curl
+  unzip
   ldns
   ufw
   NetworkManager
-  firefox
-  gimp
-  tlp
-  tlp-rdw
-  pavucontrol
+  git
+)
+
+# === SHELL & TERMINALS ===
+terminals=(
+  zsh
+  alacritty
+  # wezterm
   tmux
   neofetch
   htop
-  zathura
-  zathura-pdf-mupdf
-  grim
-  slurp
-  obs-studio
-  obsidian
+)
+
+# === UTILITIES ===
+utilities=(
+  github-cli
+  fzf
+  wl-clipboard
+  tldr
+)
+
+# === FONTS ===
+fonts=(
   ttf-font-awesome
   ttf-firacode-nerd
-  mariadb
-  postgresql
-  love
-  latexmk
-  texlive-most
+)
+
+# === WINDOW MANAGER / DISPLAY ===
+wm=(
+  ly
+  wofi
+  # rofi-wayland
+  grim
+  slurp
+)
+
+# === GRAPHICAL TOOLS ===
+gui_apps=(
+  ark
+  firefox
+  gimp
+  pavucontrol
+  obs-studio
+  obsidian
+)
+
+# === BATTERY/POWER ===
+power=(
+  tlp
+  tlp-rdw
+)
+
+# === DOCUMENT TOOLS ===
+docs=(
+  zathura
+  zathura-pdf-mupdf
+)
+
+# === DEV LANGUAGES & COMPILERS ===
+dev_langs=(
   gcc
   gdb
   make
   cmake
-  jdk-openjdk
-  maven
+  go
   nodejs
   npm
-  go
+  jdk-openjdk
+  maven
+  rustup
   python
   python-pip
   python-virtualenv
   dotnet-sdk
-  luarocks
   lua
+  luarocks
+)
+
+# === DATABASES ===
+databases=(
+  mariadb
+  postgresql
+  mongodb-bin
+)
+
+# === DEV TOOLS ===
+dev_tools=(
   tree-sitter
+  love
+  latexmk
+  texlive-most
+)
+
+# === VIRTUALIZATION / CONTAINERS ===
+virt=(
   docker
   docker-compose
-  rustup
   virt-manager
   qemu
   libvirt
   ebtables
   dnsmasq
   bridge-utils
-  git
 )
 
-yay=(
+# INSTALL ALL PACMAN PACKAGES
+all_pacman_pkgs=(
+  "${essentials[@]}"
+  "${terminals[@]}"
+  "${utilities[@]}"
+  "${fonts[@]}"
+  "${wm[@]}"
+  "${gui_apps[@]}"
+  "${power[@]}"
+  "${docs[@]}"
+  "${dev_langs[@]}"
+  "${databases[@]}"
+  "${dev_tools[@]}"
+  "${virt[@]}"
+)
+
+echo "==> Installing packages via pacman..."
+sudo pacman -S --needed --noconfirm "${all_pacman_pkgs[@]}"
+
+# Set Rust stable as default
+rustup default stable
+
+# Install rust-analyzer
+rustup component add rust-analyzer
+
+# === AUR PACKAGES ===
+yay_pkgs=(
   hyprland
   hyprpaper
   waybar
   dolphin
   nerd-fonts-fira-code
-  mongodb-bin
   unityhub
   android-studio
   flutter
   neovim-nightly-bin
 )
 
-# UPDATE SYSTEM PACKAGES
-sudo pacman -Syu --noconfirm
-
-# INSTALL YAY
-ISYAY=/sbin/yay
-if [ -f "$ISYAY" ]; then 
-  echo "yay is already installed."
-  yay -Suy --noconfirm
-else
-  git clone https://aur.archlinux.org/yay-bin.git
-  cd yay-bin || exit
-  makepkg -si --noconfirm
-  yay -Suy --noconfirm
-  cd ..
-  rm -rf yay-bin
-fi
-
-# MOVE CONFIG FILES
-SRC="$HOME/dotfiles/.config/"
-DEST="$HOME/.config/"
-mkdir -p "$DEST"
-mv -f "$SRC"* "$DEST"
-
-# INSTALL PROCESS
-
-# Install pacman packages
-sudo pacman -S --needed "${packages[@]}"
-
-# Install using yay without reinstalling existing ones
-for pkg in "${yay[@]}"; do
+echo "==> Installing AUR packages..."
+for pkg in "${yay_pkgs[@]}"; do
   if ! pacman -Qi "$pkg" &>/dev/null; then
     yay -S --noconfirm "$pkg"
   else
@@ -124,54 +177,60 @@ for pkg in "${yay[@]}"; do
   fi
 done
 
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)" # LARAVEL
-chsh -s $(which zsh) # CHANGE TO ZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # OH MY ZSH
+# === MOVE CONFIG FILES ===
+echo "==> Moving config files..."
+SRC="$HOME/dotfiles/.config/"
+DEST="$HOME/.config/"
+mkdir -p "$DEST"
+mv -f "$SRC"* "$DEST"
 
-# CONFIG INSTALLED SERVICES
-# TLP CONFIG
-sudo systemctl enable tlp
-sudo systemctl start tlp
+# === LARAVEL INSTALLER ===
+echo "==> Installing Laravel PHP setup..."
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
 
-# MARIA DB CONFIG
+# === ENABLE SERVICES ===
+echo "==> Enabling system services..."
+
+sudo systemctl enable --now tlp
+sudo systemctl enable --now mariadb
+sudo systemctl enable --now postgresql
+sudo systemctl enable --now docker
+sudo systemctl enable --now libvirtd
+sudo systemctl enable --now ly.service
+
+# === POST-INSTALL DB SETUP ===
+echo "==> Configuring databases..."
+
+# MariaDB
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-sudo systemctl enable mariadb
-sudo systemctl start mariadb
-sudo mysql_secure_installation
 
-# POSTGRESQL CONFIG
-sudo -iu postgres initdb --locale $LANG -D /var/lib/postgres/data
-sudo systemctl enable postgresql
-sudo systemctl start postgresql
+# PostgreSQL
+sudo -iu postgres initdb --locale "$LANG" -D /var/lib/postgres/data
 
-# MONGODB CONFIG
+# MongoDB
 sudo chown -R mongodb:mongodb /var/lib/mongodb
 sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
-sudo systemctl enable mongodb
-sudo systemctl start mongodb
+sudo systemctl enable --now mongodb
 
-# LY CONFIG
-sudo systemctl enable ly.service
+# === USER GROUP SETUP ===
+echo "==> Adding user to docker and libvirt groups..."
+sudo usermod -aG libvirt, kvm, docker  "$USER"
 
-# DOCKER CONFIG
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo usermod -aG docker $USER
-
-# VIRT-MACHINE CONFIG
-sudo systemctl enable libvirtd
-sudo systemctl start libvirtd
-sudo usermod -aG libvirt,kvm $USER
-
+# === ZSHRC PATH EXPORT ===
 if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 fi
 
+# === TO-DO REMINDERS ===
 echo
 echo "Installation completed!"
-
 echo
-echo "TO DO!"
-echo "Go to /etc/libvirt/libvirtd.conf and uncomment unix_sock_group in line 86"
-echo "Go to /usr/share/wayland-sessions/hyprland.desktop and change the data inside it by the one in ~/dotfiles/misc/ly/hyprland.desktop"
-echo "Go to /etc/ly/config.ini and change the data inside it by the one in ~/dotfiles/misc/ly/config.ini""
+echo "TO DO:"
+echo "1. Edit /etc/libvirt/libvirtd.conf → Uncomment: unix_sock_group"
+echo "2. Update /usr/share/wayland-sessions/hyprland.desktop → Use ~/dotfiles/misc/ly/hyprland.desktop"
+echo "3. Update /etc/ly/config.ini → Use ~/dotfiles/misc/ly/config.ini"
+echo "4. Run the following commands and follow their instructions: "
+echo "   sudo mysql_secure_installation"
+echo "   chsh -s \$(which zsh)"
+echo '   sh -c "\$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+echo "5. reboot"
