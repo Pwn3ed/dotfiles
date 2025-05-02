@@ -214,11 +214,12 @@ fonts() {
 
 # ===== DEVELOPER PACKAGES =====
 database() {
-	if ask "Install MySQL (from AUR)?"; then
-		yay -S --noconfirm mysql
-		sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-		sudo systemctl enable mysqld
-		sudo systemctl start mysqld
+	if ask "Install mariaDB (mySQL)?"; then
+		sudo pacman -S --noconfirm mariadb
+		sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+		sudo systemctl enable mariadb
+		sudo systemctl start mariadb
+		sudo mysql_secure_installation
 	fi
 
 	if ask "Install PostgreSQL?"; then
@@ -226,10 +227,13 @@ database() {
 		sudo -iu postgres initdb --locale $LANG -D /var/lib/postgres/data
 		sudo systemctl enable postgresql
 		sudo systemctl start postgresql
+		# sudo -iu postgres
 	fi
 
 	if ask "Install MongoDB?"; then
-		sudo pacman -S --noconfirm mongodb-bin
+		yay -S --noconfirm mongodb-bin
+		sudo chown -R mongodb:mongodb /var/lib/mongodb
+		sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
 		sudo systemctl enable mongodb
 		sudo systemctl start mongodb
 	fi
@@ -320,10 +324,13 @@ developer-packages() {
 	fi
 
 	if ask "Install Virt-Manager (VM GUI)?"; then
-		sudo pacman -S --noconfirm virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat
+		sudo pacman -S --noconfirm virt-manager qemu libvirt ebtables dnsmasq bridge-utils
 		sudo systemctl enable libvirtd
 		sudo systemctl start libvirtd
 		sudo usermod -aG libvirt,kvm $USER
+
+		echo "uncomment unix_sock_group in /etc/libvirt/libvirtd.conf"
+		echo
 	fi
 
 	database
@@ -378,9 +385,14 @@ if ask "Install basic packages (git, curl, etc)?"; then
 
 		shell
 
-		developer-packages
+		if ask "Install developer tools?"; then
+			developer-packages
+		fi
 	fi
 fi
 
 echo
 echo "Installation completed!"
+
+##  TODO:
+### ADD raylib, zig, javafx
