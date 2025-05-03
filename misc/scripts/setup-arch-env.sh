@@ -27,7 +27,6 @@ essentials=(
   ufw
   networkmanager
   git
-  xdg-desktop-portal-hyprland
 )
 
 # === SHELL & TERMINALS ===
@@ -46,6 +45,7 @@ utilities=(
   fzf
   wl-clipboard
   tldr
+  xdg-desktop-portal-hyprland
 )
 
 # === FONTS ===
@@ -59,6 +59,7 @@ wm=(
   ly
   wofi
   # rofi-wayland
+  hyprlock
   grim
   slurp
 )
