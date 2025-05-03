@@ -3,7 +3,7 @@
     border-radius: 0px;
     /*font-family: VictorMono, Iosevka Nerd Font, Noto Sans CJK;*/
     font-family: "Fira Code", Iosevka, FontAwesome, Noto Sans CJK;
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
     min-height: 0;
 }
@@ -97,7 +97,7 @@ window#waybar {
     background: #282828;
     margin: 5px 5px 5px 5px;
     border-radius: 16px;
-    padding: 0px 5px;
+    padding: 0px 10px;
     /*border-right: solid 1px #282738;*/
 }
 
