@@ -27,6 +27,7 @@ essentials=(
   ufw
   networkmanager
   git
+  xdg-desktop-portal-hyprland
 )
 
 # === SHELL & TERMINALS ===
