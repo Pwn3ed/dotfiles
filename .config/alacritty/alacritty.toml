@@ -25,8 +25,3 @@ style = "Bold"
 [font.italic]
 family = "FiraCode Nerd Font"
 style = "Italic"
-
-[keyboard]
-bindings = [
-	{ key = "E", mods = "Control", chars = "tmux\n" }
-]
