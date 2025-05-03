@@ -8,10 +8,11 @@ y = 10
 
 [colors.primary]
 # background = "#440011"
-background = "#181818"
+# background = "#181818"
+background = "#112233"
 
 [font]
-size = 12
+size = 14
 
 [font.normal]
 family = "FiraCode Nerd Font"
