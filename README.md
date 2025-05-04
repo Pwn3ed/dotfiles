@@ -1,21 +1,18 @@
 ## Dotfiles
 
 * My arch enviroment config files;
-* Work in progress, do not use this;
-* Check the setup-arch-env.sh and comment the packages you dont want;
-* Use `setup-arch-env.sh` in the home page, `mv ~/dotfiles/misc/scripts/setup-arch-env.sh ~/` and make it a executable, `chmod +x setup-arch-env.sh`;
-* `setup-arch-env-gui.sh` is deprecated;
+* Work in progress, do not use this unless you know what you're doing;
 
-### DOWNLOAD SIZE:
+## DOWNLOAD SIZE:
 
 - MINIMAL: ~6-8 GB
 - FULL: ~12-28 GB
 - LAST MEDIUM INSTALL: 6.1 GB
 - LAST FULL INSTALL: 18 GB // i didn't installed -> unity, flutter, android-studio and virt-machine, so it should be around 25 GB
 
-### ARCH INSTALL
+## FULL ENV SETUP
 
-#### connect to wifi
+### connect to wifi
 
 ```sh
 
@@ -48,7 +45,7 @@
 * chroot -> no
 * `reboot`
 
-#### login & setup
+### login & setup
 
 ```sh
 
@@ -56,18 +53,32 @@
     Password: YOUR_PASSWORD
 
     nmcli device wifi connect YOUR_WIFI_SSDID password YOUR_WIFI_PASSWORD
+
     git clone https://github.com/leonardo-luz/dotfiles.git
+
     mv ~/dotfiles/misc/scripts/setup-arch-env.sh ~/
     chmod +x setup-arch-env.sh
     vim setup-arch-env.sh # remove or add the packages that want
+    ./setup-arch-env.sh
+
+    mv ~/dotfiles/misc/scripts/setup-zsh-plugins.sh ~/
+    chmod +x setup-zsh-plugins.sh
+
 
     sudo vim /etc/libvirt/libvirtd.conf # Uncomment: unix_sock_group
     sudo vim /usr/share/wayland-sessions/hyprland.desktop # replace by the content in ~/dotfiles/misc/ly/hyprland.desktop
     sudo vim /etc/ly/config.ini # replace by the content in ~/dotfiles/misc/ly/config.ini"
+
     sudo mariadb_secure_installation
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # accept the change to zsh
+
+    ./setup-zsh-plugins.sh
+    sudo vim ~/.zshrc # change ZSH_THEME to bureau and insert 'git zsh-autosuggestions zsh-syntax-highlighting' in plugins
+
     rm -rf ~/dotfiles
     rm ~/setup-arch-env.sh
+    rm setup-zsh-plugins.sh
 
     reboot
 
