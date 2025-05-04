@@ -19,14 +19,14 @@ window#waybar {
     border-radius: 0px 24px 24px 0px;
     padding-right: 13px;
     margin: 5px 10px 5px 0px;
-    border: 2px solid #282828;
+    /* border: 2px solid #282828; */
 }
 
 .modules-center {
     background: rgba(30, 30, 46, 0.5);
     border-radius: 24px 24px 24px 24px;
     margin: 5px 10px 5px 10px;
-    border: 2px solid #282828;
+    border: 3px solid #282828;
 }
 
 .modules-right {
@@ -34,7 +34,7 @@ window#waybar {
     border-radius: 24px 0px 0px 24px;
     padding-left: 13px;
     margin: 5px 0px 5px 10px;
-    border: 2px solid #282828;
+    /* border: 2px solid #282828; */
 }
 
 #workspaces {
@@ -78,8 +78,9 @@ window#waybar {
 }
 
 #custom-tlp {
-  color: #ffaa55;
-  padding: 0 10px;
+    color: #282828;
+    padding: 0 10px;
+    font-weight: bolder;
 }
 
 #custom-power {
@@ -230,29 +231,31 @@ window#waybar {
 #cpu {
     background-color: #282828;
     /*color: #FABD2D;*/
-    border-radius: 16px 8px 8px 16px;
-    margin: 3px;
+    border-radius: 20px 12px 12px 20px;
+    /* margin: 3px; */
     margin-right: 5px;
-    padding: 1px 12px;
+    padding: 0px 12px;
     font-weight: bold;
 }
 
 #memory {
     background-color: #282828;
     /*color: #83A598;*/
-    border-radius: 8px 16px 16px 8px;
-    margin: 3px;
+    border-radius: 12px 20px 20px 12px;
+    /* margin: 3px; */
     margin-left: 5px;
-    padding: 1px 12px;
+    padding: 0px 12px;
     font-weight: bold;
 }
 
 #disk {
+
     background-color: #282828;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 0px;
-    padding: 1px 10px;
+    border-radius: 12px 20px 20px 12px;
+    /* margin: 3px; */
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0px 12px;
     font-weight: bold;
 }
 

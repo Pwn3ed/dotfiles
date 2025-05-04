@@ -11,7 +11,7 @@
     "modules-left": [
         "custom/launcher",
         "hyprland/workspaces",
-        "mpd",
+        "mpd"
     ],
     "modules-center": [
         "cpu",
@@ -27,7 +27,7 @@
         "network",
         "backlight",
         "battery",
-        "clock",
+        "clock"
     ],
     // INFO: Modules configuration
     "hyprland/workspaces": {
@@ -43,7 +43,7 @@
             // "5": "",
             "urgent": "",
             "active": "",
-            "default": "󰧞",
+            "default": "󰧞"
         }
     },
     "keyboard-state": {
@@ -96,7 +96,7 @@
         "format": "{:%I:%M %p - %d %B %Y}",
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%I:%M %p}",
+        "format-alt": "{:%I:%M %p}"
     },
 
     "memory": {
@@ -180,7 +180,7 @@
       "format": "{}",
       "exec": "~/.config/waybar/scripts/tlp_profile.sh",
       "interval": 10,
-      "on-click": "~/.config/waybar/scripts/tlp_profile.sh toggle",
+      "on-click": "~/.config/waybar/scripts/tlp_profile.sh toggle"
     },
     "custom/media": {
         "format": "{icon} {text}",
