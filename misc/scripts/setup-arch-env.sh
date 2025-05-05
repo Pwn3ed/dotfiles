@@ -16,6 +16,8 @@ if ! command -v yay &>/dev/null; then
   makepkg -si --noconfirm
   cd ..
   rm -rf yay-bin
+
+  yay -Suy --noconfirm
 else
   yay -Suy --noconfirm
 fi
@@ -36,7 +38,6 @@ essentials=(
 terminals=(
   zsh
   alacritty
-  # wezterm
   tmux
   neofetch
   htop
@@ -170,6 +171,7 @@ fi
 # === AUR PACKAGES ===
 yay_pkgs=(
   mongodb-bin
+  # wezterm
   hyprland
   hyprpaper
   waybar

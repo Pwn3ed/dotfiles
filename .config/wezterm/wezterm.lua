@@ -12,9 +12,12 @@ end
 config.window_padding = {
 	left = 3,
 	right = 0,
-	top = 2,
+	top = 3,
 	bottom = 0,
 }
+
+config.text_background_opacity = 0.9
+config.enable_tab_bar = false
 
 local presets = {
 	dark = {
@@ -67,30 +70,72 @@ config.font_size = 10
 
 config.window_background_opacity = 0.75
 
-config.leader = { key = '§', timeout_milliseconds = 1000 }
+-- ---@diagnostic disable-next-line: undefined-field
+-- wezterm.on('update-right-status', function(window, pane)
+-- 	window:set_right_status(window:active_workspace())
+-- end)
+
+---@diagnostic disable-next-line: undefined-field
+local act = wezterm.action
+
+config.leader = { key = 'a', mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
-		key = '\\',
-		mods = 'LEADER',
-		---@diagnostic disable-next-line: undefined-field
-		action = wezterm.action.SplitHorizontal
+		key = 'v',
+		mods = 'LEADER|CTRL',
+		action = act.SplitHorizontal
 	},
 	{
-		key = '-',
-		mods = 'LEADER',
-		---@diagnostic disable-next-line: undefined-field
-		action = wezterm.action.SplitVertical
+		key = 'h',
+		mods = 'LEADER|CTRL',
+		action = act.SplitVertical
 	},
-	---@diagnostic disable-next-line: undefined-field
-	{ key = "h", mods = "LEADER", action = wezterm.action { ActivatePaneDirection = "Left" } },
-	---@diagnostic disable-next-line: undefined-field
-	{ key = "j", mods = "LEADER", action = wezterm.action { ActivatePaneDirection = "Down" } },
-	---@diagnostic disable-next-line: undefined-field
-	{ key = "k", mods = "LEADER", action = wezterm.action { ActivatePaneDirection = "Up" } },
-	---@diagnostic disable-next-line: undefined-field
-	{ key = "l", mods = "LEADER", action = wezterm.action { ActivatePaneDirection = "Right" } },
-	---@diagnostic disable-next-line: undefined-field
-	{ key = "w", mods = "LEADER", action = wezterm.action { CloseCurrentPane = { confirm = true } } },
+	{ key = "h", mods = "LEADER",      action = act { ActivatePaneDirection = "Left" } },
+	{ key = "j", mods = "LEADER",      action = act { ActivatePaneDirection = "Down" } },
+	{ key = "k", mods = "LEADER",      action = act { ActivatePaneDirection = "Up" } },
+	{ key = "l", mods = "LEADER",      action = act { ActivatePaneDirection = "Right" } },
+
+	{ key = "w", mods = "LEADER|CTRL", action = act { CloseCurrentPane = { confirm = true } } },
+	{ key = "l", mods = "LEADER|CTRL", action = act.ShowDebugOverlay },
+
+	-- {
+	-- 	key = 'y',
+	-- 	mods = 'CTRL|SHIFT',
+	-- 	action = act.SwitchToWorkspace {
+	-- 		name = 'default',
+	-- 	},
+	-- },
+	-- -- Switch to a monitoring workspace, which will have `top` launched into it
+	-- {
+	-- 	key = 'u',
+	-- 	mods = 'CTRL|SHIFT',
+	-- 	action = act.SwitchToWorkspace {
+	-- 		name = 'monitoring',
+	-- 		spawn = {
+	-- 			args = { 'top' },
+	-- 		},
+	-- 	},
+	-- },
+	-- { key = 'i', mods = 'CTRL|SHIFT', action = act.SwitchToWorkspace },
+	-- {
+	-- 	key = '9',
+	-- 	mods = 'ALT',
+	-- 	action = act.ShowLauncherArgs {
+	-- 		flags = 'FUZZY|WORKSPACES',
+	-- 	},
+	-- },
 }
+
+-- config.unix_domains = {
+-- 	{
+-- 		name = 'unix',
+-- 	},
+-- }
+
+-- This causes `wezterm` to act as though it was started as
+-- `wezterm connect unix` by default, connecting to the unix
+-- domain on startup.
+-- If you prefer to connect manually, leave out this line.
+-- config.default_gui_startup_args = { 'connect', 'unix' }
 
 return config
