@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## TODO:
+#  ADD IMAGE VIEWER/VIDEO
+
 # Exit on error
 set -e
 
