@@ -4,19 +4,20 @@ blur = true
 
 [window.padding]
 x = 10
-y = 10
+y = 15
 
 [colors.primary]
 # background = "#440011"
 # background = "#181818"
-background = "#112233"
+# background = "#112233"
+background = "#000000"
 
 [font]
 size = 15
 
 [font.normal]
 family = "FiraCode Nerd Font"
-style = "Regular"
+style = "Medium"
 
 [font.bold]
 family = "FiraCode Nerd Font"

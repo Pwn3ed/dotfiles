@@ -78,7 +78,7 @@ config.window_background_opacity = 0.75
 ---@diagnostic disable-next-line: undefined-field
 local act = wezterm.action
 
-config.leader = { key = 'a', mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = 'b', mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = 'v',

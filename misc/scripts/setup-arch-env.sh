@@ -51,6 +51,7 @@ utilities=(
   wl-clipboard
   tldr
   xdg-desktop-portal-hyprland
+  imagemagick
 )
 
 # === FONTS ===
