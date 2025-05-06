@@ -78,7 +78,7 @@
 
     rm -rf ~/dotfiles
     rm ~/setup-arch-env.sh
-    rm setup-zsh-plugins.sh
+    rm ~/setup-zsh-plugins.sh
 
     reboot
 
