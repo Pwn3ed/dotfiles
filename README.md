@@ -73,6 +73,8 @@
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # accept the change to zsh
 
+    # You will probably need to reboot here
+
     ./setup-zsh-plugins.sh
     sudo vim ~/.zshrc # change ZSH_THEME to bureau and insert 'git zsh-autosuggestions zsh-syntax-highlighting' in plugins
 
