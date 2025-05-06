@@ -122,7 +122,8 @@ databases=(
 
 # === DEV TOOLS ===
 dev_tools=(
-  tree-sitter
+  tree-sitter-cli
+  tree
   love
   texlive
 )
