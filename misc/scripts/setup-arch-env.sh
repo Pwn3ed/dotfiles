@@ -47,6 +47,7 @@ terminals=(
 utilities=(
   github-cli
   fzf
+  ripgrep
   wl-clipboard
   tldr
   xdg-desktop-portal-hyprland
@@ -64,6 +65,7 @@ wm=(
   wofi
   # rofi-wayland
   hyprlock
+  # brightnessctl
   grim
   slurp
 )
@@ -108,6 +110,7 @@ dev_langs=(
   dotnet-sdk
   lua
   luarocks
+  jq
 )
 
 # === DATABASES ===
