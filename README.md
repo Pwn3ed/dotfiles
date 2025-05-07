@@ -17,11 +17,14 @@
 ```sh
 
     iwctl
+    device list
     station wlan0 show
     station wlan0 scan
+    station wlan0 get-networks
     station wlan0 connect `YOUR_SSID`
     YOUR_WIFI_PASSWORD
     # ctrl+d to exit iwctl
+    ping 8.8.8.8
     archinstall
 
 ```
