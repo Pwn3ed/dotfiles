@@ -167,12 +167,6 @@ else
     echo "==> rustup not found. Skipping Rust setup."
 fi
 
-if [ -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
-  echo "Catppuccin theme is already installed. Skipping."
-else
-  git clone https://github.com/omerxx/catppuccin-tmux.git ~/.config/tmux/plugins/catppuccin/tmux
-fi
-
 # === AUR PACKAGES ===
 yay_pkgs=(
   mongodb-bin
@@ -204,6 +198,7 @@ DEST="$HOME/.config/"
 if [ -d "$SRC" ]; then
     mkdir -p "$DEST"
     mv -f "$SRC"* "$DEST"
+    rm -rf "$SRC"
     echo "==> Config files moved to $DEST."
 else
     echo "==> Source config directory not found: $SRC. Skipping move."
@@ -214,6 +209,12 @@ if [ -d "$HOME/dotfiles/wallpapers" ]; then
     echo "==> Wallpapers moved."
 else
     echo "==> Wallpapers directory not found. Skipping move."
+fi
+
+if [ -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
+  echo "Catppuccin theme is already installed. Skipping."
+else
+  git clone https://github.com/omerxx/catppuccin-tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
 # === LARAVEL INSTALLER ===

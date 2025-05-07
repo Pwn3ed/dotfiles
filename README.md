@@ -62,7 +62,7 @@
     mv ~/dotfiles/misc/scripts/setup-arch-env.sh ~/
     chmod +x setup-arch-env.sh
     vim setup-arch-env.sh # remove or add the packages that want
-    ./setup-arch-env.sh
+    ./setup-arch-env.sh # if you need to rerun this script again, reboot your system before
 
     mv ~/dotfiles/misc/scripts/setup-zsh-plugins.sh ~/
     chmod +x setup-zsh-plugins.sh
