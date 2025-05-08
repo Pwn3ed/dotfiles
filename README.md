@@ -79,7 +79,11 @@
     # You will probably need to reboot here
 
     ./setup-zsh-plugins.sh
-    sudo vim ~/.zshrc # change ZSH_THEME to bureau and insert 'git zsh-autosuggestions zsh-syntax-highlighting' in plugins
+    sudo vim ~/.zshrc # In your zshrc do:
+    # ZSH_THEME="bureau"
+    # plugins=('git zsh-autosuggestions zsh-syntax-highlighting')
+    # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    # export PATH=$JAVA_HOME/bin:$PATH
 
     rm -rf ~/dotfiles
     rm ~/setup-arch-env.sh

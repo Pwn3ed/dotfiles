@@ -2,6 +2,7 @@
 
 ## TODO:
 #  ADD IMAGE VIEWER/VIDEO
+#  ADD GRAPHICAL INTERFACE FOR NETWORKING
 
 # Exit on error
 set -e
@@ -66,7 +67,7 @@ wm=(
   wofi
   # rofi-wayland
   hyprlock
-  # brightnessctl
+  brightnessctl
   grim
   slurp
 )
@@ -103,6 +104,7 @@ dev_langs=(
   nodejs
   npm
   jdk-openjdk
+  jdk17-openjdk
   maven
   rustup
   python
@@ -286,12 +288,4 @@ fi
 echo
 echo "Installation completed!"
 echo
-echo "TO DO:"
-echo "1. Edit /etc/libvirt/libvirtd.conf → Uncomment: unix_sock_group"
-echo "2. Update /usr/share/wayland-sessions/hyprland.desktop → Use ~/dotfiles/misc/ly/hyprland.desktop"
-echo "3. Update /etc/ly/config.ini → Use ~/dotfiles/misc/ly/config.ini"
-echo "4. Run the following commands and follow their instructions: "
-echo "   sudo mariadb_secure_installation"
-echo '   sh -c "\$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
-echo '5. Delete ~/dotfiles and ~/setup-arch-env.sh'
-echo "6. reboot"
+echo "Read the README before using your system!!!"
