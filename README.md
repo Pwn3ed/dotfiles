@@ -82,7 +82,8 @@
     sudo vim ~/.zshrc # In your zshrc do:
     # ZSH_THEME="bureau"
     # plugins=('git zsh-autosuggestions zsh-syntax-highlighting')
-    # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+    # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk # choose one
+    # export JAVA_HOME=/usr/lib/jvm/java-24-openjdk # choose one
     # export PATH=$JAVA_HOME/bin:$PATH
 
     rm -rf ~/dotfiles

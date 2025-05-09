@@ -28,7 +28,7 @@
         "backlight",
         "battery",
         "clock",
-        "custom/lock"
+        "custom/power"
     ],
     // INFO: Modules configuration
     "hyprland/workspaces": {
@@ -201,15 +201,16 @@
     },
     "custom/power": {
         "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "tooltip": false,
+        "on-click": "wlogout",
+        "menu-actions": {
+                "lock": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+                "logout": "",
+                "shutdown": "shutdown",
+                "reboot": "reboot",
+                "suspend": "systemctl suspend",
+                "hibernate": "systemctl hibernate"
+        }
     },
     "custom/lock": {
         "tooltip": false,

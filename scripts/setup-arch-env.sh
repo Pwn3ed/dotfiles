@@ -3,6 +3,7 @@
 ## TODO:
 #  ADD IMAGE VIEWER/VIDEO
 #  ADD GRAPHICAL INTERFACE FOR NETWORKING
+#  ADD raylib, zig, javafx, [? nm-applet, nwg-look, qt6ct ?]
 
 # Exit on error
 set -e
@@ -58,7 +59,9 @@ utilities=(
 # === FONTS ===
 fonts=(
   ttf-font-awesome
+  ttf-nerd-fonts-symbols
   ttf-firacode-nerd
+  ttf-jetbrains-mono-nerd
 )
 
 # === WINDOW MANAGER / DISPLAY ===
@@ -176,6 +179,7 @@ yay_pkgs=(
   hyprland
   hyprpaper
   waybar
+  wlogout-git
   dolphin
   # unityhub
   # android-studio

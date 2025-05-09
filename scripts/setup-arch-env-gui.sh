@@ -403,6 +403,3 @@ fi
 
 echo
 echo "Installation completed!"
-
-##  TODO:
-### ADD raylib, zig, javafx
