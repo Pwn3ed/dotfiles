@@ -2,8 +2,8 @@
 {
     "position": "top",
     "layer": "top",
-    "height": 60,
-    "margin-top": 0,
+    "height": 50,
+    "margin-top": 10,
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
@@ -150,6 +150,7 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        // "on-click": "nmtui"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
