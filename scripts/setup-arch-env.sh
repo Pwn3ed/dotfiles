@@ -38,6 +38,8 @@ else
     echo "==> rustup not found. Skipping Rust setup."
 fi
 
+mkdir -p "$HOME/documents/screenshots"
+
 # === MOVE CONFIG FILES ===
 echo "==> Moving config files..."
 $HOME/dotfiles/scripts/update-config-files.sh

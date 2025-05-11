@@ -190,6 +190,7 @@ window#waybar {
     padding: 0 30px 0 14px;
     /*border-right: solid 1px #282738;*/
     font-size: 20px;
+    font-weight: bolder;
 }
 
 #custom-launcher button:hover {

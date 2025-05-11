@@ -198,9 +198,7 @@
     "custom/launcher": {
         "format": "",
         // "format": "󰈸",
-        "on-click": "wofi",
-        "on-click-right": "wofi",
-        "tooltip-format": "search application"
+        "format-alt": "léOS"
     },
     "custom/power": {
         "format" : "⏻ ",
