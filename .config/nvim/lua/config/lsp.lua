@@ -50,6 +50,7 @@ local servers = {
       }
     }
   },
+  zls = {},
   html = {},
   ts_ls = {},
   omnisharp = {

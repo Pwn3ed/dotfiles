@@ -10,7 +10,7 @@ cdf() {
 # nvim fzf
 nvimf() {
   local file
-  file=$(fzf)
+  file=$(fzf --preview='bat {}')
   [ -n "$file" ] && nvim "$file"
 }
 
@@ -22,17 +22,33 @@ nvimfd() {
 }
 
 config-sync() {
-  RUN_SCRIPT=${RUN_SCRIPT:-false} ~/dotfiles/scripts/update-config-files.sh
+  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/update-config-files.sh
 }
 
 shell-sync() {
-  RUN_SCRIPT=${RUN_SCRIPT:-false} ~/dotfiles/scripts/update-config-files.sh
+  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/update-zsh-files.sh
 }
 
 config-compare() {
-  ~/dotfiles/scripts/compare-config-files.sh
+  $HOME/dotfiles/scripts/compare-config-files.sh
 }
 
 shell-compare() {
-  ~/dotfiles/scripts/compare-zsh-files.sh
+  $HOME/dotfiles/scripts/compare-zsh-files.sh
+}
+
+update-pacman() {
+  if [[ "$1" == "-Syu" ]]; then
+    echo "==> Updating system with pacman -Syu..."
+    sudo pacman -Syu --noconfirm
+  fi
+  $HOME/dotfiles/scripts/install-pacman-packages.sh
+}
+
+update-yay() {
+  if [[ "$1" == "-Suy" ]]; then
+    echo "==> Updating system with yay -Suy..."
+    yay -Suy --noconfirm
+  fi
+  $HOME/dotfiles/scripts/install-yay-packages.sh
 }

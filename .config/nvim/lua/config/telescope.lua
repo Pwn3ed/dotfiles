@@ -44,9 +44,13 @@ set('n', '<leader>s/', function()
 end, { desc = '[S]earch [/] in Open Files' })
 
 set('n', '<leader>sn', function()
-  builtin.find_files { cwd = vim.fn.stdpath 'config' }
+  builtin.find_files { cwd = '$HOME/dotfiles/.config/nvim/' }
 end, { desc = '[S]earch [N]eovim files' })
 
 set('n', '<leader>st', function()
-  builtin.find_files { cwd = vim.fn.stdpath 'config' .. '/../wezterm/' }
-end, { desc = '[S]earch [T]erminal files' })
+  builtin.find_files { cwd = vim.fn.stdpath 'config' }
+end, { desc = '[S]earch [T]emp Neovim files' })
+
+set('n', '<leader>sm', function()
+  builtin.find_files { cwd = '$HOME/dotfiles/' }
+end, { desc = '[S]earch [M]y Dotfiles' })

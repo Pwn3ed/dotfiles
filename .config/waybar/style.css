@@ -74,9 +74,9 @@ window#waybar {
     border-radius: 32px;
 }
 
-#custom-date, #custom-lock, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher, #idle_inhibitor {
+#temperature, #custom-date, #custom-lock, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher, #idle_inhibitor {
     background: transparent;
-    padding: 5px 15px 5px 10px;
+    padding: 5px 10px 5px 10px;
     margin: 5px 5px 5px 5px;
     border-radius: 8px;
     border: solid 0px #f4d9e1;
