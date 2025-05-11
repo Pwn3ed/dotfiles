@@ -3,7 +3,7 @@
 ## TODO:
 #  ADD IMAGE VIEWER/VIDEO
 #  ADD GRAPHICAL INTERFACE FOR NETWORKING
-#  ADD raylib, zig, javafx, [? nm-applet, nwg-look, qt6ct ?]
+#  ADD raylib, javafx, [? nm-applet, nwg-look, qt6ct ?]
 
 # Exit on error
 set -e
@@ -24,145 +24,11 @@ else
   yay -Suy --noconfirm
 fi
 
-# === SYSTEM ESSENTIALS ===
-essentials=(
-  base-devel
-  curl
-  wget
-  unzip
-  ldns
-  ufw
-  networkmanager
-  git
-)
+## Installing pacman packages
+$HOME/dotfiles/scripts/install-pacman-packages.sh
 
-# === SHELL & TERMINALS ===
-terminals=(
-  zsh
-  alacritty
-  tmux
-  neofetch
-  htop
-)
-
-# === UTILITIES ===
-utilities=(
-  github-cli
-  fzf
-  ripgrep
-  wl-clipboard
-  tldr
-  xdg-desktop-portal-hyprland
-  imagemagick
-)
-
-# === FONTS ===
-fonts=(
-  ttf-font-awesome
-  ttf-nerd-fonts-symbols
-  ttf-firacode-nerd
-  ttf-jetbrains-mono-nerd
-)
-
-# === WINDOW MANAGER / DISPLAY ===
-wm=(
-  ly
-  wofi
-  # rofi-wayland
-  hyprlock
-  brightnessctl
-  grim
-  slurp
-)
-
-# === GRAPHICAL TOOLS ===
-gui_apps=(
-  ark
-  firefox
-  gimp
-  pavucontrol
-  obs-studio
-  obsidian
-)
-
-# === BATTERY/POWER ===
-power=(
-  tlp
-  tlp-rdw
-)
-
-# === DOCUMENT TOOLS ===
-docs=(
-  zathura
-  zathura-pdf-mupdf
-)
-
-# === DEV LANGUAGES & COMPILERS ===
-dev_langs=(
-  gcc
-  gdb
-  make
-  cmake
-  go
-  nodejs
-  npm
-  jdk-openjdk
-  jdk17-openjdk
-  maven
-  rustup
-  python
-  python-pip
-  python-virtualenv
-  dotnet-sdk
-  lua
-  luarocks
-  jq
-)
-
-# === DATABASES ===
-databases=(
-  mariadb
-  postgresql
-)
-
-# === DEV TOOLS ===
-dev_tools=(
-  tree-sitter-cli
-  tree
-  love
-  texlive
-)
-
-# === VIRTUALIZATION / CONTAINERS ===
-virt=(
-  docker
-  docker-compose
-  # virt-manager
-  # qemu
-  # libvirt
-  # ebtables
-  # dnsmasq
-  # bridge-utils
-)
-
-# INSTALL ALL PACMAN PACKAGES
-all_pacman_pkgs=(
-  "${essentials[@]}"
-  "${terminals[@]}"
-  "${utilities[@]}"
-  "${fonts[@]}"
-  "${wm[@]}"
-  "${gui_apps[@]}"
-  "${power[@]}"
-  "${docs[@]}"
-  "${dev_langs[@]}"
-  "${databases[@]}"
-  "${dev_tools[@]}"
-  "${virt[@]}"
-)
-
-echo "==> Installing packages via pacman..."
-sudo pacman -S --needed --noconfirm "${all_pacman_pkgs[@]}"
+## Installing yay packages
+$HOME/dotfiles/scripts/install-yay-packages.sh
 
 # Set Rust stable as default
 if command -v rustup >/dev/null 2>&1; then
@@ -172,43 +38,9 @@ else
     echo "==> rustup not found. Skipping Rust setup."
 fi
 
-# === AUR PACKAGES ===
-yay_pkgs=(
-  mongodb-bin
-  # wezterm-git
-  hyprland
-  hyprpaper
-  waybar
-  wlogout-git
-  dolphin
-  # unityhub
-  # android-studio
-  # flutter
-  neovim-nightly-bin
-)
-
-echo "==> Installing AUR packages..."
-for pkg in "${yay_pkgs[@]}"; do
-  if ! pacman -Qi "$pkg" &>/dev/null; then
-    yay -S --noconfirm "$pkg"
-  else
-    echo "$pkg is already installed. Skipping."
-  fi
-done
-
 # === MOVE CONFIG FILES ===
 echo "==> Moving config files..."
-SRC="$HOME/dotfiles/.config/"
-DEST="$HOME/.config/"
-
-if [ -d "$SRC" ]; then
-    mkdir -p "$DEST"
-    mv -f "$SRC"* "$DEST"
-    rm -rf "$SRC"
-    echo "==> Config files moved to $DEST."
-else
-    echo "==> Source config directory not found: $SRC. Skipping move."
-fi
+$HOME/dotfiles/scripts/update-config-files.sh
 
 if [ -d "$HOME/dotfiles/wallpapers" ]; then
     mv "$HOME/dotfiles/wallpapers" "$HOME"

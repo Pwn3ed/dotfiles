@@ -16,8 +16,9 @@ if [ -d "$ZSH" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH}/custom/plugins/zsh-autosuggestions"
   fi
 
-  echo "In ~/.zshrc change ZSH_THEME to 'bureau'"
-  echo "In ~/.zshrc add 'zsh-autosuggestions zsh-syntax-highlighting' to plugins"
+  # === MOVE CONFIG FILES ===
+  echo "==> Moving config files..."
+  $HOME/dotfiles/scripts/update-zsh-files.sh
 else
   echo "oh-my-zsh not installed!"
   exit 1
