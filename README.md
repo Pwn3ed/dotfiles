@@ -1,7 +1,9 @@
 ## Dotfiles
 
 * My arch enviroment config files;
+* this README can be outdated so be careful;
 * Work in progress, do not use this unless you know what you're doing;
+* Fork this if you want to use it – I'll be pushing updates that might break things.
 
 ## DOWNLOAD SIZE:
 
@@ -24,7 +26,7 @@
     station wlan0 connect `YOUR_SSID`
     YOUR_WIFI_PASSWORD
     # ctrl+d to exit iwctl
-    ping 8.8.8.8
+    ping archlinux.org
     archinstall
 
 ```
@@ -59,36 +61,35 @@
 
     git clone https://github.com/leonardo-luz/dotfiles.git
 
-    mv ~/dotfiles/misc/scripts/setup-arch-env.sh ~/
-    chmod +x setup-arch-env.sh
+    chmod +x $HOME/dotfiles/scripts/install-pacman-packages.sh
+    chmod +x $HOME/dotfiles/scripts/install-yay-packages.sh
+
+    chmod +x $HOME/dotfiles/scripts/setup-arch-env.sh
+    chmod +x $HOME/dotfiles/scripts/setup-zsh-plugins.sh
+
+    chmod +x $HOME/dotfiles/scripts/update-config-files.sh
+    chmod +x $HOME/dotfiles/scripts/update-zsh-files.sh
+
+    chmod +x $HOME/dotfiles/scripts/compare-config-files.sh
+    chmod +x $HOME/dotfiles/scripts/compare-zsh-files.sh
+
     vim setup-arch-env.sh # remove or add the packages that want
+
+     # this will overwrite some config files from .config so backup those before, if you want
     ./setup-arch-env.sh # if you need to rerun this script again, reboot your system before
 
-    mv ~/dotfiles/misc/scripts/setup-zsh-plugins.sh ~/
-    chmod +x setup-zsh-plugins.sh
-
-
-    sudo vim /etc/libvirt/libvirtd.conf # Uncomment: unix_sock_group
+    sudo vim /etc/libvirt/libvirtd.conf # Uncomment: unix_sock_group, if libvirt was installed
     sudo vim /usr/share/wayland-sessions/hyprland.desktop # replace by the content in ~/dotfiles/misc/ly/hyprland.desktop
     sudo vim /etc/ly/config.ini # replace by the content in ~/dotfiles/misc/ly/config.ini"
 
-    sudo mariadb_secure_installation
+    sudo mysql_secure_installation # will change to mariadb_secure_installation
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # accept the change to zsh
 
     # You will probably need to reboot here
 
+     # this will remove your zsh config so backup it before if you want
     ./setup-zsh-plugins.sh
-    sudo vim ~/.zshrc # In your zshrc do:
-    # ZSH_THEME="bureau"
-    # plugins=('git zsh-autosuggestions zsh-syntax-highlighting')
-    # export JAVA_HOME=/usr/lib/jvm/java-17-openjdk # choose one
-    # export JAVA_HOME=/usr/lib/jvm/java-24-openjdk # choose one
-    # export PATH=$JAVA_HOME/bin:$PATH
-
-    rm -rf ~/dotfiles
-    rm ~/setup-arch-env.sh
-    rm ~/setup-zsh-plugins.sh
 
     reboot
 
