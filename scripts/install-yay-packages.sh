@@ -1,7 +1,7 @@
 # === AUR PACKAGES ===
 yay_pkgs=(
   mongodb-bin
-  # wezterm-git
+  wezterm-git
   hyprland
   hyprpaper
   waybar

@@ -22,6 +22,7 @@ terminals=(
 # === UTILITIES ===
 utilities=(
   github-cli
+  bat
   fzf
   ripgrep
   wl-clipboard
