@@ -79,8 +79,8 @@
     ./setup-arch-env.sh # if you need to rerun this script again, reboot your system before
 
     sudo vim /etc/libvirt/libvirtd.conf # Uncomment: unix_sock_group, if libvirt was installed
-    sudo vim /usr/share/wayland-sessions/hyprland.desktop # replace by the content in ~/dotfiles/misc/ly/hyprland.desktop
-    sudo vim /etc/ly/config.ini # replace by the content in ~/dotfiles/misc/ly/config.ini"
+    sudo vim /usr/share/wayland-sessions/hyprland.desktop # replace by the content in ~/dotfiles/ly/hyprland.desktop
+    sudo vim /etc/ly/config.ini # replace by the content in ~/dotfiles/ly/config.ini"
 
     sudo mysql_secure_installation # will change to mariadb_secure_installation
 

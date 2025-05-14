@@ -66,7 +66,7 @@ config.window_background_gradient = set_background_gradiant(current_gradiant, 'V
 
 config.color_scheme = "Dracula"
 config.font = wezterm.font("Fira Code Nerd Font")
-config.font_size = 10
+config.font_size = 14
 
 config.window_background_opacity = 0.75
 

@@ -54,6 +54,7 @@ wm=(
 gui_apps=(
   ark
   firefox
+  qutebrowser
   gimp
   pavucontrol
   obs-studio

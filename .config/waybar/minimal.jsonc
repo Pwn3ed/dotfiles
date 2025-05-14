@@ -3,33 +3,27 @@
     "position": "top",
     "layer": "top",
     "height": 50,
-    "margin-top": 0,
+    "margin-top": 10,
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 4,
     "modules-left": [
-        "custom/launcher",
         "hyprland/workspaces",
         "mpd"
     ],
     "modules-center": [
-        "cpu",
-        "custom/tlp",
-        "disk",
-        "memory"
+        "clock"
     ],
     "modules-right": [
         "tray",
-        "idle_inhibitor",
         "pulseaudio",
-        // "microphone",
         "network",
-        "temperature",
         "backlight",
         "battery",
-        "clock",
-        "custom/power"
+        "cpu",
+        "disk",
+        "memory"
     ],
     // INFO: Modules configuration
     "hyprland/workspaces": {
@@ -38,11 +32,6 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
-            // "1": "",
-            // "2": "",
-            // "3": "",
-            // "4": "",
-            // "5": "",
             "urgent": "",
             "active": "",
             "default": "󰧞"
@@ -95,23 +84,22 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M %p - %d %B %Y}",
+        "format": "{:%I:%M %p}",
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%I:%M %p}"
+        "format-alt": "{:%I:%M %p | %d/%m/%Y}"
     },
     "memory": {
         "interval": 30,
-        "format": "  {used:0.1f}G / {total:0.1f}G"
+        "format": "  {percentage}%"
     },
     "cpu": {
         "interval": 1,
-        "format": " {icon0}{icon1}{icon2}{icon3}{icon} {usage:>2}%   ",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        "format": "{usage:>2}%   "
     },
     "disk": {
         "format": "󰋊 {}%",
-        "format-alt": "󰋊 {used}/{total} GiB",
+        "format-alt": "󰋊 {used}/{total} G",
         "interval": 5
     },
 
@@ -150,7 +138,7 @@
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
         // "on-click": "nmtui"
     },
@@ -177,12 +165,6 @@
     //         "default": "",
     //         "muted": ""
     //     },
-    "custom/tlp": {
-      "format": "{}",
-      "exec": "~/.config/waybar/scripts/tlp_profile.sh",
-      "interval": 10,
-      "on-click": "~/.config/waybar/scripts/tlp_profile.sh toggle"
-    },
     "custom/media": {
         "format": "{icon} {text}",
         "return-type": "json",
@@ -194,28 +176,6 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/launcher": {
-        "format": "",
-        // "format": "󰈸",
-        "format-alt": "léOS"
-    },
-    "custom/power": {
-        "format" : "⏻ ",
-        "tooltip": false,
-        "on-click": "wlogout",
-        "menu-actions": {
-                "lock": "sh -c '(sleep 0.5s; hyprlock)' & disown",
-                "logout": "",
-                "shutdown": "shutdown",
-                "reboot": "reboot",
-                "suspend": "systemctl suspend",
-                "hibernate": "systemctl hibernate"
-        }
-    },
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
-        "format": ""
     }
 }
+
