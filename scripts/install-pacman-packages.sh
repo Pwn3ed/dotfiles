@@ -62,6 +62,7 @@ gui_apps=(
   gimp
   pavucontrol
   obs-studio
+  discord
   obsidian
 )
 

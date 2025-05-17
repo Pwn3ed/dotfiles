@@ -15,11 +15,10 @@
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 6px;
-    margin-top: 2px;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.0);
+    background: rgba(30, 30, 46, 0.5);
     border-bottom: 0px solid #282828;
     color: #f4d9e1
 }
@@ -44,17 +43,14 @@ window#waybar {
     background-color: transparent;
 }
 #workspaces button {
-    margin: 5px 5px 5px 5px;
     padding: 0px;
     border-radius: 16px;
-    color: #928374;
+    color: #e5809e;
 }
 
 #workspaces button.active {
     padding: 1px 6px;
-    /* background-color: #825384; */
-    /* background-color: #e5809e; */
-    color: #e5809e;
+    color: #f4d9e1;
     background-color: transparent;
     border-radius: 32px;
 }
@@ -62,15 +58,13 @@ window#waybar {
 #backlight, #disk, #memory, #cpu, #temperature, #custom-date, #custom-lock, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher, #idle_inhibitor {
     background: transparent;
     padding: 5px 12px 5px 12px;
-    /* margin: 5px 5px 5px 5px; */
 }
 
 #tray {
     background: #282828;
-    margin: 5px 5px 5px 5px;
+    margin: 8px 5px;
     border-radius: 16px;
     padding: 0px 10px;
-    /*border-right: solid 1px #282738;*/
 }
 
 #battery {
@@ -107,7 +101,7 @@ window#waybar {
     border-radius: 16px;
     /*border-left: solid 1px #282738;*/
     /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-bottom: 5px;
     margin-left: 0px;
     font-weight: normal;
@@ -122,7 +116,7 @@ window#waybar {
     border-radius: 16px;
     /*border-left: solid 1px #282738;*/
     /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-bottom: 5px;
     font-weight: normal;
     font-style: normal;
