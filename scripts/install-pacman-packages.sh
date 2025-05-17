@@ -8,6 +8,10 @@ essentials=(
   ufw
   networkmanager
   git
+  libnotify
+  mako
+  man-db
+  man-pages
 )
 
 # === SHELL & TERMINALS ===
