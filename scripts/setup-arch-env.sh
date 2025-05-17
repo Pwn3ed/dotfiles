@@ -44,12 +44,7 @@ mkdir -p "$HOME/documents/screenshots"
 echo "==> Moving config files..."
 RUN_SCRIPT=true $HOME/dotfiles/scripts/update-config-files.sh
 
-if [ -d "$HOME/dotfiles/wallpapers" ]; then
-    mv "$HOME/dotfiles/wallpapers" "$HOME"
-    echo "==> Wallpapers moved."
-else
-    echo "==> Wallpapers directory not found. Skipping move."
-fi
+RUN_SCRIPT=true $HOME/dotfiles/scripts/update-wallpapers-files.sh
 
 if [ -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
   echo "Catppuccin theme is already installed. Skipping."

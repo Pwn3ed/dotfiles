@@ -3,6 +3,7 @@ local dashboard = require 'dashboard'
 local asciis = {}
 
 pcall(function()
+  --- Place your custom dashboard logos in .config/nvim/lua/custom/dashboard
   asciis = require 'custom.dashboard'
 end)
 
