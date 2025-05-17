@@ -3,27 +3,33 @@
     "position": "top",
     "layer": "top",
     "height": 50,
-    "margin-top": 10,
+    "margin-top": 0,
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 4,
     "modules-left": [
+        "custom/launcher",
         "hyprland/workspaces",
         "mpd"
     ],
     "modules-center": [
-        "clock"
+        "cpu",
+        "custom/tlp",
+        "disk",
+        "memory"
     ],
     "modules-right": [
         "tray",
+        "idle_inhibitor",
         "pulseaudio",
+        // "microphone",
         "network",
+        "temperature",
         "backlight",
         "battery",
-        "cpu",
-        "disk",
-        "memory"
+        "clock",
+        "custom/power"
     ],
     // INFO: Modules configuration
     "hyprland/workspaces": {
@@ -32,6 +38,11 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
+            // "1": "",
+            // "2": "",
+            // "3": "",
+            // "4": "",
+            // "5": "",
             "urgent": "",
             "active": "",
             "default": "󰧞"
@@ -84,22 +95,23 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M %p}",
+        "format": "{:%I:%M %p - %d %B %Y}",
         "timezone": "America/Sao_Paulo",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%I:%M %p | %d/%m/%Y}"
+        "format-alt": "{:%I:%M %p}"
     },
     "memory": {
         "interval": 30,
-        "format": "  {percentage}%"
+        "format": "  {used:0.1f}G / {total:0.1f}G"
     },
     "cpu": {
         "interval": 1,
-        "format": "{usage:>2}%   "
+        "format": " {icon0}{icon1}{icon2}{icon3}{icon} {usage:>2}%   ",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
     },
     "disk": {
         "format": "󰋊 {}%",
-        "format-alt": "󰋊 {used}/{total} G",
+        "format-alt": "󰋊 {used}/{total} GiB",
         "interval": 5
     },
 
@@ -134,12 +146,13 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "",
+        "format-wifi": "▲ {bandwidthUpBits} ▼ {bandwidthDownBytes} ",
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 10
         // "on-click": "nmtui"
     },
     "pulseaudio": {
@@ -165,6 +178,11 @@
     //         "default": "",
     //         "muted": ""
     //     },
+    "custom/tlp": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/tlp_profile.sh",
+      "interval": 10
+    },
     "custom/media": {
         "format": "{icon} {text}",
         "return-type": "json",
@@ -176,6 +194,29 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/launcher": {
+        "format": "",
+        // "format": "󰈸",
+        "format-alt": "léOS",
+        "tooltip-format": "<big>CHEAT SHEET</big>\n<tt><small>SUPER + N = NAVIGATOR\nSUPER + E = TERMINAL\nSUPER + num = CHANGE WORKSPACE\nSUPER + SHIFT + num = CHANGE APP TO WORKSPACE\nSUPER + Q = EXIT CURRENT APP\nSUPER + M = APP MENU\nSUPER + SHIFT + L = LOCKCREEN\nSUPER + SHIFT + P = SCREENSHOT\nSUPER + SHIFT + W = LOGOUT\nSUPER + SHIFT + B = HIDE WAYBAR</small></tt>"
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout",
+        "menu-actions": {
+                "lock": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+                "logout": "",
+                "shutdown": "shutdown",
+                "reboot": "reboot",
+                "suspend": "systemctl suspend",
+                "hibernate": "systemctl hibernate"
+        }
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+        "format": ""
     }
 }
-

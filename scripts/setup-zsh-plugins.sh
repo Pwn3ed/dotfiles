@@ -18,7 +18,7 @@ if [ -d "$ZSH" ]; then
 
   # === MOVE CONFIG FILES ===
   echo "==> Moving config files..."
-  $HOME/dotfiles/scripts/update-zsh-files.sh
+  RUN_SCRIPT=true $HOME/dotfiles/scripts/update-zsh-files.sh
 else
   echo "oh-my-zsh not installed!"
   exit 1

@@ -42,7 +42,7 @@ mkdir -p "$HOME/documents/screenshots"
 
 # === MOVE CONFIG FILES ===
 echo "==> Moving config files..."
-$HOME/dotfiles/scripts/update-config-files.sh
+RUN_SCRIPT=true $HOME/dotfiles/scripts/update-config-files.sh
 
 if [ -d "$HOME/dotfiles/wallpapers" ]; then
     mv "$HOME/dotfiles/wallpapers" "$HOME"
