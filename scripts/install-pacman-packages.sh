@@ -114,6 +114,11 @@ dev_tools=(
   tree
   love
   texlive
+  texlive-core
+  texlive-latexextra
+  texlive-pictures
+  texlive-science
+  texlive-langportuguese
 )
 
 # === VIRTUALIZATION / CONTAINERS ===
