@@ -2,9 +2,10 @@
 show=drun
 term=alacritty
 width=460
-height=200
+height=215
+yoffset=300
 columns=1
-location=center
+location=top
 prompt=
 allow-markup=true
 allow-images=true
