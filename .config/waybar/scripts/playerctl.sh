@@ -6,7 +6,6 @@ if [ "$1" == "toggle" ]; then
 fi
 
 if ! playerctl status &> /dev/null; then
-    echo " No music"
     exit 0
 fi
 
