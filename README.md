@@ -94,3 +94,34 @@
     reboot
 
 ```
+
+## AFTER SETUP
+
+* use `git pull` in dotfiles to keep it up to date
+* use these commands to update the system
+
+```sh
+
+    update-pacman # -Syu for complete update
+
+```
+
+```sh
+
+    update-yay # -Suy for complete update
+
+```
+
+```sh
+
+    # WARN: THIS COMMAND REPLACES CONFIG FILES
+    RUN_SCRIPT=true config-sync
+
+```
+
+```sh
+
+    # WARN: THIS COMMAND REPLACES SHELL FILES
+    RUN_SCRIPT=true shell-sync
+
+```
