@@ -1,5 +1,5 @@
 font=Fira Code Nerd Font 12
-format=<b>%s</b>\n---------------------------------------\n%b
+format=<b>%a - %s</b>\n\n%b
 sort=-time
 output=DP-2
 layer=overlay
