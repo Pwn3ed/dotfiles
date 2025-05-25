@@ -19,12 +19,13 @@ terminals=(
   zsh
   alacritty
   tmux
-  neofetch
-  htop
+  ghostty
 )
 
 # === UTILITIES ===
 utilities=(
+  neofetch
+  htop
   github-cli
   bat
   fzf
@@ -98,7 +99,7 @@ dev_langs=(
   lua
   luarocks
   jq
-  zig ## OUTDATED - v0.13 -> v0.14
+  zig ## OUTDATED - v0.13 -> v0.14 (use AUR ?)
 )
 
 # === DATABASES ===

@@ -1,0 +1,16 @@
+background = 221122
+foreground = ffbbee
+
+background-opacity = 0.8
+background-blur = true
+
+window-padding-x = 2
+window-padding-y = 2
+
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+
+font-family = Fira Code Nerd Font
+font-size = 15
+
+window-theme = ghostty
