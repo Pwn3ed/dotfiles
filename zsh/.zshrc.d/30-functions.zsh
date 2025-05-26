@@ -10,7 +10,7 @@ cdf() {
 # nvim fzf
 nvimf() {
   local file
-  file=$(fzf --preview='bat {}')
+  file=$(fzf --preview='cat {}')
   [ -n "$file" ] && nvim "$file"
 }
 
