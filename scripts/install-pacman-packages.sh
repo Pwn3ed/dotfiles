@@ -6,12 +6,15 @@ essentials=(
   unzip
   ldns
   ufw
+  iwd
   networkmanager
   git
   libnotify
   mako
   man-db
   man-pages
+  intel-media-driver
+  libva-utils
 )
 
 # === SHELL & TERMINALS ===
@@ -65,6 +68,9 @@ gui_apps=(
   obs-studio
   discord
   obsidian
+  desmume
+  mgba-qt
+  snes9x
 )
 
 # === BATTERY/POWER ===

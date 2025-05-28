@@ -68,6 +68,7 @@ sudo systemctl enable --now tlp
 sudo systemctl enable --now docker
 # sudo systemctl enable --now libvirtd
 sudo systemctl enable ly.service
+sudo systemctl enable ufw.service
 
 # === POST-INSTALL DB SETUP ===
 echo "==> Configuring databases..."
