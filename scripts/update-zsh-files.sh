@@ -7,6 +7,7 @@ if [ "$RUN_SCRIPT" != "true" ]; then
 fi
 
 echo "==> Updating Zsh config files..."
+notify-send --app-name=Shell "Sync" "Updating shell files..."
 
 SRC_DIR="$HOME/dotfiles/zsh"
 DEST_FILE="$HOME/.zshrc"

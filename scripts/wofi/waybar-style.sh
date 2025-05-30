@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STYLES=("WAYBAR STYLE LIST" "default" "too-much")
+STYLES=("WAYBAR STYLE LIST" "default" "too-much" "cartoon")
 
 MENU=$(printf "%s\n" "${STYLES[@]}")
 
@@ -24,6 +24,11 @@ case "$CHOICE" in
   "too-much")
     killall waybar
     waybar --config ~/.config/waybar/full.jsonc --style ~/.config/waybar/full.css &
+    exit
+    ;;
+  "cartoon")
+    killall waybar
+    waybar --config ~/.config/waybar/cartoon.jsonc --style ~/.config/waybar/cartoon.css &
     exit
     ;;
 esac

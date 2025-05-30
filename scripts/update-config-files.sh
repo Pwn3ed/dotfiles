@@ -7,6 +7,7 @@ if [ "$RUN_SCRIPT" != "true" ]; then
 fi
 
 echo "==> Updating config files..."
+notify-send --app-name=Config "Sync" "Updating config files..."
 
 SRC="$HOME/dotfiles/.config/"
 DEST="$HOME/.config/"
