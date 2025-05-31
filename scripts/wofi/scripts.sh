@@ -4,6 +4,12 @@ STYLES=("SCRIPTS LIST" "config sync" "shell sync")
 
 MENU=$(printf "%s\n" "${STYLES[@]}")
 
+DIR="$HOME/dotfiles/scripts/utils"
+
+FILES=$(ls "$DIR")
+
+MENU+=$(printf "\n%s" "${FILES[@]}")
+
 # Show the menu and get user choice
 CHOICE=$(echo "$MENU" | wofi --dmenu --prompt "Scripts List")
 
@@ -22,6 +28,11 @@ case "$CHOICE" in
     ;;
   "shell sync")
     exec env RUN_SCRIPT=true "$HOME/dotfiles/scripts/update-zsh-files.sh"
+    exit
+    ;;
+  *)
+    OUTPUT="$("$DIR/$CHOICE")"
+    notify-send --app-name=Notification "$OUTPUT"
     exit
     ;;
 esac

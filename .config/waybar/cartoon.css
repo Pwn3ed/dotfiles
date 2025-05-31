@@ -90,6 +90,25 @@ window#waybar {
     color: #24283b;
 }
 
+#custom-ping {
+    padding: 5px 12px 5px 12px;
+    border-radius: 5px;
+}
+
+#custom-ping.good {
+    color: #559922;
+}
+
+#custom-ping.warning {
+    background-color: #f77777;
+    color: #44486b;
+}
+
+#custom-ping.critical {
+    background-color: #FF4444;
+    color: #44486b;
+}
+
 #pulseaudio.muted {
     background: transparent;
     color: #928374;
