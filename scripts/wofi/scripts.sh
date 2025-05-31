@@ -30,6 +30,16 @@ case "$CHOICE" in
     exec env RUN_SCRIPT=true "$HOME/dotfiles/scripts/update-zsh-files.sh"
     exit
     ;;
+  "latency.sh")
+    JSON_OUTPUT="$("$DIR/$CHOICE")"
+
+    # Parse the JSON to extract 'text' and 'class'
+    TEXT=$(echo "$JSON_OUTPUT" | jq -r '.text')
+    CLASS=$(echo "$JSON_OUTPUT" | jq -r '.class')
+
+    notify-send --app-name=Notification "$TEXT" "state: $CLASS"
+    exit
+    ;;
   *)
     OUTPUT="$("$DIR/$CHOICE")"
     notify-send --app-name=Notification "$OUTPUT"

@@ -8,9 +8,9 @@ latency=$(ping -c 1 -W 1 8.8.8.8 \
 # Round latency to integer
 latency_int=$(printf "%.0f" "$latency")
 
-if (( latency_int < 51 )); then
+if (( latency_int < 50 )); then
   state="good"
-elif (( latency_int < 201 )); then
+elif (( latency_int < 200 )); then
   state="warning"
 else
   state="critical"
