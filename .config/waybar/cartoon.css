@@ -83,11 +83,13 @@ window#waybar {
 #battery.warning:not(.charging) {
     background-color: #f77777;
     color: #24283b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #battery.critical:not(.charging) {
     background-color: #FF4444;
     color: #24283b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #custom-ping {
@@ -102,11 +104,13 @@ window#waybar {
 #custom-ping.warning {
     background-color: #f77777;
     color: #44486b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #custom-ping.critical {
     background-color: #FF4444;
     color: #44486b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #pulseaudio.muted {
