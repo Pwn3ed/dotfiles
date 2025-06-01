@@ -1,16 +1,11 @@
-background = 221122
-foreground = ffbbee
+theme = default
 
 background-opacity = 0.8
 background-blur = true
 
-# window-padding-x = 2
-# window-padding-y = 2
+keybind = ctrl+alt+r=reload_config
 
-# keybind = ctrl+d=new_split:right
-# keybind = ctrl+r=reload_config
-
-keybind = global:ctrl+z=toggle_quick_terminal
+keybind = ctrl+alt+o=toggle_window_decorations
 
 font-family = Fira Code Nerd Font
 font-size = 15

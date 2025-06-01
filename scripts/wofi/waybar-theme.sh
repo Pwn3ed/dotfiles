@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STYLES=("WAYBAR STYLE LIST" "default" "too-much" "cartoon")
+STYLES=("WAYBAR THEMES LIST" "default" "too-much" "cartoon")
 
 MENU=$(printf "%s\n" "${STYLES[@]}")
 

@@ -10,7 +10,7 @@ cdf() {
 # nvim fzf
 nvimf() {
   local file
-  file=$(fzf --preview='cat {}')
+  file=$(fzf --preview='bat --style=numbers --color=always --line-range :300 {}')
   [ -n "$file" ] && nvim "$file"
 }
 

@@ -144,7 +144,7 @@
         "format": "{text}",
         "exec": "~/dotfiles/scripts/utils/latency.sh",
         "return-type": "json",
-        "interval": 4
+        "interval": 10
     }
 }
 

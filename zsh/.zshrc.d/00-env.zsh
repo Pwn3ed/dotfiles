@@ -9,7 +9,17 @@ export PATH=$JAVA_HOME/bin:$PATH
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Firefox options
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_X11_EGL=1
 
+# Fuzy finder options
+export FZF_DEFAULT_OPTS="
+  --height=40%
+  --layout=reverse
+  --preview-window=right:60%
+  --color=fg:#d0d0d0,bg:#1e1e1e,preview-bg:#1e1e1e,hl:#ff9d00,fg+:#ffffff,bg+:#5f5f5f,hl+:#ffaa00
+"
+
+# Default editor
 export EDITOR="nvim"

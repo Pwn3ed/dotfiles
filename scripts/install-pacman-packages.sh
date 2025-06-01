@@ -15,6 +15,7 @@ essentials=(
   man-pages
   intel-media-driver
   libva-utils
+  reflector
 )
 
 # === SHELL & TERMINALS ===
