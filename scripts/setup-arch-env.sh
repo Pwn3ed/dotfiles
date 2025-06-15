@@ -1,8 +1,6 @@
 #!/bin/bash
 
 ## TODO:
-#  ADD IMAGE VIEWER/VIDEO
-#  ADD GRAPHICAL INTERFACE FOR NETWORKING
 #  ADD raylib, javafx, [? nm-applet, nwg-look, qt6ct ?]
 
 # Exit on error

@@ -121,6 +121,7 @@ dev_tools=(
   tree-sitter-cli
   tree
   love
+  jenkins
   texlive
   texlive-core
   texlive-latexextra
