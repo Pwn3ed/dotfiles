@@ -17,3 +17,12 @@ autocmd('BufEnter', {
     vim.cmd("source" .. vim.fn.stdpath('config') .. "/syntax/markdown.vim")
   end,
 })
+
+autocmd('BufEnter', {
+  pattern = '*.tex',
+  desc = 'Highlight a custom latex block',
+  group = augroup('latex-custom-block', { clear = true }),
+  callback = function()
+    vim.cmd("source" .. vim.fn.stdpath('config') .. "/syntax/latex.vim")
+  end,
+})

@@ -7,6 +7,21 @@ cdf() {
   [ -n "$dir" ] && cd "$dir"
 }
 
+hist() {
+  local cmd
+  unsetopt HIST_VERIFY
+  unsetopt HIST_SAVE_NO_DUPS
+
+  cmd=$(history | awk '{$1=""; sub(/^ /, ""); print}' | fzf)
+
+  if [[ -n "$cmd" ]]; then
+    eval " $cmd"
+  fi
+
+  setopt HIST_VERIFY
+  setopt HIST_SAVE_NO_DUPS
+}
+
 # nvim fzf
 nvimf() {
   local file

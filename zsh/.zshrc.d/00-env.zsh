@@ -24,5 +24,10 @@ export FZF_DEFAULT_OPTS="
   --color=fg:#d0d0d0,bg:#1e1e1e,preview-bg:#1e1e1e,hl:#ff9d00,fg+:#ffffff,bg+:#5f5f5f,hl+:#ffaa00
 "
 
+# Enable safer history behavior
+setopt HIST_VERIFY
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+
 # Default editor
 export EDITOR="nvim"
