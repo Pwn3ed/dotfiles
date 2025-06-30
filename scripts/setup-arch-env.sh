@@ -23,10 +23,10 @@ else
 fi
 
 ## Installing pacman packages
-$HOME/dotfiles/scripts/install-pacman-packages.sh
+$HOME/dotfiles/scripts/config/install-pacman-packages.sh
 
 ## Installing yay packages
-$HOME/dotfiles/scripts/install-yay-packages.sh
+$HOME/dotfiles/scripts/config/install-yay-packages.sh
 
 # Set Rust stable as default
 if command -v rustup >/dev/null 2>&1; then
@@ -40,9 +40,11 @@ mkdir -p "$HOME/documents/screenshots"
 
 # === MOVE CONFIG FILES ===
 echo "==> Moving config files..."
-RUN_SCRIPT=true $HOME/dotfiles/scripts/update-config-files.sh
+# FIX:
+exec RUN_SCRIPT=true $HOME/dotfiles/scripts/config/update-config-files.sh
 
-RUN_SCRIPT=true $HOME/dotfiles/scripts/update-wallpapers-files.sh
+# FIX:
+exec RUN_SCRIPT=true $HOME/dotfiles/scripts/config/update-wallpapers-files.sh
 
 if [ -d "$HOME/.config/tmux/plugins/catppuccin/tmux" ]; then
   echo "Catppuccin theme is already installed. Skipping."
