@@ -2,11 +2,11 @@
 
 sudo pacman -Syu --noconfirm
 
-sudo pacman -S --needed --noconfirm networkmanager iwd
+sudo pacman -S --needed --noconfirm reflector
 
-# Changes network backend to iwd, default: wpa_supplicant
-SRC="$HOME/dotfiles/etc/NetworkManager/conf.d/wifi_backend.conf"
-DEST="/etc/NetworkManager/conf.d/wifi_backend.conf"
+# Move reflector configuration
+SRC="$HOME/dotfiles/etc/xdg/reflector/reflector.conf"
+DEST="/etc/xdg/reflector/reflector.conf"
 
 # Check if the source file exists
 if [ ! -f "$SRC" ]; then
@@ -25,3 +25,6 @@ sudo mv "$SRC" "$DEST" || {
   echo "Error: Could not move file '$SRC' to '$DEST'. Check permissions."
   exit 1
 }
+
+sudo systemctl start reflector.service
+sudo systemctl enable reflector.timer

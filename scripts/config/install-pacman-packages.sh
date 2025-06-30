@@ -1,43 +1,39 @@
 # === SYSTEM ESSENTIALS ===
 essentials=(
+  ldns
   base-devel
   curl
   wget
   unzip
-  ldns
   ufw
-  iwd
-  networkmanager
   git
   libnotify
   mako
   man-db
   man-pages
-  intel-media-driver
   libva-utils
-  reflector
+  intel-media-driver # intel gpu
 )
 
 # === SHELL & TERMINALS ===
 terminals=(
-  zsh
-  alacritty
+  # alacritty
   tmux
   ghostty
 )
 
 # === UTILITIES ===
 utilities=(
-  neofetch
-  htop
-  github-cli
-  bat
-  fzf
-  ripgrep
-  wl-clipboard
+  # neofetch # FIX: Not found
+  htop # service manager
+  github-cli # gh
+  bat # file viewer
+  fzf # fuzy finder
+  ripgrep # grep
+  wl-clipboard # clipboard integration
   tldr
   xdg-desktop-portal-hyprland
-  imagemagick
+  imagemagick # image render on terminal
 )
 
 # === FONTS ===
@@ -52,7 +48,6 @@ fonts=(
 wm=(
   ly
   wofi
-  # rofi-wayland
   hyprlock
   brightnessctl
   grim
@@ -98,7 +93,6 @@ dev_langs=(
   jdk-openjdk
   jdk17-openjdk
   maven
-  rustup
   python
   python-pip
   python-virtualenv
@@ -111,35 +105,21 @@ dev_langs=(
 
 # === DATABASES ===
 databases=(
-  mariadb
-  postgresql
   sqlite
 )
 
 # === DEV TOOLS ===
 dev_tools=(
+  jenkins
   tree-sitter-cli
   tree
   love
-  jenkins
   texlive
   texlive-core
   texlive-latexextra
   texlive-pictures
   texlive-science
   texlive-langportuguese
-)
-
-# === VIRTUALIZATION / CONTAINERS ===
-virt=(
-  docker
-  docker-compose
-  # virt-manager
-  # qemu
-  # libvirt
-  # ebtables
-  # dnsmasq
-  # bridge-utils
 )
 
 # INSTALL ALL PACMAN PACKAGES
@@ -155,7 +135,6 @@ all_pacman_pkgs=(
   "${dev_langs[@]}"
   "${databases[@]}"
   "${dev_tools[@]}"
-  "${virt[@]}"
 )
 
 echo "==> Installing packages via pacman..."
