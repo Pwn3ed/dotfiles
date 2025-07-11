@@ -11,8 +11,10 @@ end
 
 local macros_nvim  = function()
   local log = string.format('yovim.print("%spa: ", %spA);%sO%sjviq', esc, esc, esc, esc)
+  local emph = string.format('sa{hxh%%hx%%i\\emph%s', esc)
 
   vim.fn.setreg('l', log)
+  vim.fn.setreg('e', emph)
 end
 
 local macros_latex = function()
@@ -21,4 +23,4 @@ local macros_latex = function()
   vim.fn.setreg('l', fixme)
 end
 
-macros_js()
+macros_nvim()

@@ -37,19 +37,19 @@ nvimfd() {
 }
 
 config-sync() {
-  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/update-config-files.sh
+  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/config/update-config-files.sh
 }
 
 shell-sync() {
-  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/update-zsh-files.sh
+  RUN_SCRIPT=${RUN_SCRIPT:-false} $HOME/dotfiles/scripts/config/update-zsh-files.sh
 }
 
 config-compare() {
-  $HOME/dotfiles/scripts/compare-config-files.sh
+  $HOME/dotfiles/scripts/utils/compare-config-files.sh
 }
 
 shell-compare() {
-  $HOME/dotfiles/scripts/compare-zsh-files.sh
+  $HOME/dotfiles/scripts/utils/compare-zsh-files.sh
 }
 
 update-pacman() {
@@ -57,7 +57,7 @@ update-pacman() {
     echo "==> Updating system with pacman -Syu..."
     sudo pacman -Syu --noconfirm
   fi
-  $HOME/dotfiles/scripts/install-pacman-packages.sh
+  $HOME/dotfiles/scripts/config/install-pacman-packages.sh
 }
 
 update-yay() {
@@ -65,5 +65,5 @@ update-yay() {
     echo "==> Updating system with yay -Suy..."
     yay -Suy --noconfirm
   fi
-  $HOME/dotfiles/scripts/install-yay-packages.sh
+  $HOME/dotfiles/scripts/config/install-yay-packages.sh
 }
