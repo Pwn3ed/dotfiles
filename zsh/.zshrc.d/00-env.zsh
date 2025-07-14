@@ -9,6 +9,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 # Remove maven warnings
 export MAVEN_OPTS="--enable-native-access=ALL-UNNAMED"
 
+export DOTNET_ROOT=/usr/share/dotnet
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 

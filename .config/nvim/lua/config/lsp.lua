@@ -53,27 +53,31 @@ local servers = {
   zls = {},
   html = {},
   ts_ls = {},
-  omnisharp = {
-    cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
-
-    settings = {
-      FormattingOptions = {
-        EnableEditorConfigSupport = true,
-        OrganizeImports = nil,
-      },
-      MsBuild = {
-        LoadProjectsOnDemand = nil,
-      },
-      RoslynExtensionsOptions = {
-        EnableAnalyzersSupport = nil,
-        EnableImportCompletion = nil,
-        AnalyzeOpenDocumentsOnly = nil,
-      },
-      Sdk = {
-        IncludePrereleases = true,
-      },
+  csharp_ls = {
+    cmd = { "csharp-ls" },
+    filetypes = { "cs" },
+    init_options = {
+      AutomaticWorkspaceInit = true
     },
   },
+  -- omnisharp = {
+  --   cmd = {
+  --     vim.fn.stdpath("data") .. "/mason/packages/omnisharp/omnisharp",
+  --     "--languageserver",
+  --     "--hostPID", tostring(vim.fn.getpid()),
+  --   },
+  --   -- cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+  --   -- root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
+  --   filetypes = { "cs" },
+  --   settings = {
+  --     FormattingOptions = {
+  --       EnableEditorConfigSupport = true,
+  --     },
+  --     Sdk = {
+  --       IncludePrereleases = true,
+  --     },
+  --   },
+  -- },
   -- dartls = {
   --   cmd = { "dart", "language-server", "--protocol=lsp" },
   --   filetypes = { "dart" },
