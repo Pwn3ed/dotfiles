@@ -1,0 +1,35 @@
+# Only allow modern, strong crypto
+KexAlgorithms curve25519-sha256@libssh.org
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
+
+# Disable root login
+PermitRootLogin no
+
+# Use public key authentication only
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+AuthenticationMethods publickey
+
+# Limit login attempts
+MaxAuthTries 3
+LoginGraceTime 30
+
+# Bind to specific IP if possible
+ListenAddress 0.0.0.0
+# Or better, your specific public IP
+
+# Limit which users can log in
+AllowUsers youruser
+
+# Disable X11 forwarding unless required
+X11Forwarding no
+
+# Prevent SSH agent forwarding abuse
+AllowAgentForwarding no
+
+# Disable empty passwords
+PermitEmptyPasswords no
+
+LogLevel VERBOSE
+Port 2222

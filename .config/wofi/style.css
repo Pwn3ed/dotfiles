@@ -1,28 +1,25 @@
 #window {
-    /* background-color: #282828; */
-    /* border: 3px solid #181818; */
-    background-color: rgba(30, 30, 30, 0.3);
+    background-color: rgba(245, 245, 245, 0.9);
     border-radius: 8px;
     font-family: "FiraCode Nerd Font", monospace;
     font-size: 20px;
-    color: #cdd6f4;
+    color: #2e2e2e;
 }
 
 #entry {
     padding: 8px;
-    margin: 4px 8px 4px 8px;
+    margin: 4px 8px;
     border-radius: 4px;
-    color: #828374;
-    background-color: #181818;
+    color: #555555;
+    background-color: #e8e8e8;
 }
 
 #entry:selected {
-    background-color: #202020;
-    color: #f4d9e1;
+    background-color: #d0d0d0;
+    color: #000000;
     border: none;
-    box-shadow: none;
-    box-shadow: inset 0px 2px 5px 0px black;
     font-weight: bold;
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
     outline: none;
 }
 
@@ -33,27 +30,17 @@
     outline: none;
     box-shadow: none;
     margin: -10;
-
-    /* margin: 10px; */
-    /* border-radius: 4px; */
-    /* padding: 6px; */
-    /* background-color: #484848; */
-    /* color: #cdd6f4; */
-    /* border: none; */
-    /* box-shadow: none; */
-    /* box-shadow: inset 0px 2px 5px 0px #202020; */
 }
 
 #input * {
     color: transparent;
-    /* color: #161616; */
-    /* padding: 0px 10px; */
 }
 
 #entry:selected * {
-    background-color: #202020;
+    background-color: #d0d0d0;
 }
 
-#entry *{
-    background-color: #181818;
+#entry * {
+    background-color: #e8e8e8;
 }
+

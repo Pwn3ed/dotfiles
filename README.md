@@ -39,3 +39,7 @@
     RUN_SCRIPT=true shell-sync
 
 ```
+
+* Important Links
+
+- [Arch System Maintenance](https://wiki.archlinux.org/title/System_maintenance)

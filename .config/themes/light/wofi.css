@@ -1,0 +1,46 @@
+#window {
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 8px;
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 20px;
+    color: #2e2e2e;
+}
+
+#entry {
+    padding: 8px;
+    margin: 4px 8px;
+    border-radius: 4px;
+    color: #555555;
+    background-color: #e8e8e8;
+}
+
+#entry:selected {
+    background-color: #d0d0d0;
+    color: #000000;
+    border: none;
+    font-weight: bold;
+    box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#input {
+    background-color: transparent;
+    font-size: 0px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: -10;
+}
+
+#input * {
+    color: transparent;
+}
+
+#entry:selected * {
+    background-color: #d0d0d0;
+    color: #3399ff;
+}
+
+#entry * {
+    background-color: #e8e8e8;
+}

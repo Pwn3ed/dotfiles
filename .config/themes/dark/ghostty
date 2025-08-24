@@ -1,0 +1,12 @@
+theme = tokyonight-storm
+
+background-opacity = 0.85
+background-blur = true
+
+keybind = ctrl+alt+r=reload_config
+keybind = ctrl+alt+o=toggle_window_decorations
+
+font-family = Fira Code Nerd Font
+font-size = 15
+
+window-theme = ghostty

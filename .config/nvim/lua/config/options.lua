@@ -1,3 +1,5 @@
+vim.fn.mkdir(vim.fn.stdpath("data") .. "/site/spell", "p")
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -33,3 +35,11 @@ vim.opt.inccommand = 'split'
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "en_us", "pt_br" }
+  end,
+})

@@ -1,25 +1,19 @@
 # === SYSTEM ESSENTIALS ===
 essentials=(
-  ldns
   base-devel
   curl
   wget
   unzip
-  ufw
+  fd
   git
   libnotify
   mako
   man-db
   man-pages
   libva-utils
+  iptables-nft
   intel-media-driver # intel gpu
-)
-
-# === SHELL & TERMINALS ===
-terminals=(
-  # alacritty
-  tmux
-  ghostty
+  pacman-contrib
 )
 
 # === UTILITIES ===
@@ -64,9 +58,6 @@ gui_apps=(
   obs-studio
   discord
   obsidian
-  desmume
-  mgba-qt
-  snes9x
 )
 
 # === BATTERY/POWER ===
@@ -114,18 +105,11 @@ dev_tools=(
   tree-sitter-cli
   tree
   love
-  texlive
-  texlive-core
-  texlive-latexextra
-  texlive-pictures
-  texlive-science
-  texlive-langportuguese
 )
 
 # INSTALL ALL PACMAN PACKAGES
 all_pacman_pkgs=(
   "${essentials[@]}"
-  "${terminals[@]}"
   "${utilities[@]}"
   "${fonts[@]}"
   "${wm[@]}"

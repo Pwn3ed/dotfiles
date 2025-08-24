@@ -1,7 +1,6 @@
 # === AUR PACKAGES ===
 yay_pkgs=(
   mongodb-bin
-  wezterm-git
   hyprland
   hyprpaper
   waybar
@@ -9,7 +8,6 @@ yay_pkgs=(
   dolphin
   # unityhub
   # android-studio
-  # flutter
   neovim-nightly-bin
 )
 

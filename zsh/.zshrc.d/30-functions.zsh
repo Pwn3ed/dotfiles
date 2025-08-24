@@ -52,6 +52,10 @@ shell-compare() {
   $HOME/dotfiles/scripts/utils/compare-zsh-files.sh
 }
 
+switch-theme() {
+  $HOME/dotfiles/scripts/utils/switch-theme.sh $1
+}
+
 update-pacman() {
   if [[ "$1" == "-Syu" ]]; then
     echo "==> Updating system with pacman -Syu..."

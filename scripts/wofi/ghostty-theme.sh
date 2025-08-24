@@ -2,7 +2,7 @@
 
 CONFIG="$HOME/.config/ghostty/config"
 
-STYLES=("GHOSTTY THEMES LIST" "Twilight" "GruvboxLight" "Jackie Brown")
+STYLES=("GHOSTTY THEMES LIST" "Retro" "Twilight" "GruvboxLight" "Jackie Brown" "coffee_theme" "tokyonight-day")
 
 MENU=$(printf "%s\n" "${STYLES[@]}")
 

@@ -1,0 +1,68 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "Fira Code Nerd Font", Iosevka, FontAwesome, Noto Sans CJK;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(30, 30, 30, 0.0);
+    color: #cdd6f4;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.52);
+}
+
+#workspaces button {
+    padding: 2px;
+    border-radius: 16px;
+    color: #89b4fa;
+}
+
+#workspaces button.active {
+    padding: 2px 6px;
+    color: #1e1e1e;
+    background-color: #89b4fa;
+    border-radius: 32px;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #ff5555;
+    color: #1e1e2e;
+}
+
+#custom-ping.good {
+    color: #a6e3a1;
+}
+
+#custom-ping.warning {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+}
+
+#custom-ping.critical {
+    background-color: #ff5555;
+    color: #1e1e2e;
+}
+
+#pulseaudio.muted {
+    color: #928374;
+}

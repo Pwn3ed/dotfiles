@@ -18,24 +18,26 @@
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.5);
+    background: rgba(30, 30, 46, 0.0);
     border-bottom: 0px solid #282828;
-    color: #f4d9e1
+    color: #301220;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: #dddddd;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.52);
 }
 
 .modules-left {
-    background: rgba(30, 30, 46, 0.0);
-    border-radius: 0px 0px 0px 0px;
     padding-left: 10px;
-}
-
-.modules-center {
-    background: rgba(30, 30, 46, 0.0);
-    border-radius: 0px;
+    padding-right: 10px;
 }
 
 .modules-right {
-    background: rgba(30, 30, 46, 0.0);
     padding-right: 10px;
 }
 
@@ -43,14 +45,14 @@ window#waybar {
     background-color: transparent;
 }
 #workspaces button {
-    padding: 0px;
+    padding: 2px;
     border-radius: 16px;
     color: #e5809e;
 }
 
 #workspaces button.active {
-    padding: 1px 6px;
-    color: #f4d9e1;
+    padding: 2px 6px;
+    color: #402232;
     background-color: transparent;
     border-radius: 32px;
 }
@@ -61,30 +63,54 @@ window#waybar {
 }
 
 #tray {
-    background: #282828;
-    margin: 8px 5px;
-    border-radius: 16px;
+    border: 0px solid #282828;
+    background-color: #aaaaaa;
+    border-radius: 12px;
     padding: 0px 10px;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #battery {
     padding: 5px 15px 5px 10px;
-    border-radius: 5px 5px 5px 5px;
-    color: #9ece6a;
+    border-radius: 5px;
+    color: #559922;
 }
 
 #battery.charging {
-    color: #9ece6a;
+    color: #559922;
 }
 
 #battery.warning:not(.charging) {
     background-color: #f77777;
     color: #24283b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #battery.critical:not(.charging) {
     background-color: #FF4444;
     color: #24283b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
+}
+
+#custom-ping {
+    padding: 5px 12px 5px 12px;
+    border-radius: 5px;
+}
+
+#custom-ping.good {
+    color: #559922;
+}
+
+#custom-ping.warning {
+    background-color: #f77777;
+    color: #44486b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
+}
+
+#custom-ping.critical {
+    background-color: #FF4444;
+    color: #44486b;
+    box-shadow: 0px 8px 8px -10px rgba(0,0,0,0.8) inset;
 }
 
 #pulseaudio.muted {
@@ -93,3 +119,4 @@ window#waybar {
     border-radius: 8px;
     margin-left: 0px;
 }
+
