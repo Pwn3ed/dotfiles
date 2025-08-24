@@ -1,6 +1,6 @@
 ## Dotfiles
 
-* My arch enviroment config files;
+* My arch environment config files;
 * this README can be outdated so be careful;
 * Do not use this unless you know what you're doing;
 * Fork this if you want to use it – I'll be pushing updates that might break things.
