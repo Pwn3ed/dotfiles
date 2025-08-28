@@ -11,7 +11,7 @@ essentials=(
   man-db
   man-pages
   libva-utils
-  iptables-nft
+  # iptables-nft # Conflict
   intel-media-driver # intel gpu
   pacman-contrib
 )
