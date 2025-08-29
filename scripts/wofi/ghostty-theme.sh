@@ -1,20 +1,17 @@
 #!/bin/bash
 
-CONFIG="$HOME/.config/ghostty/config"
+CONFIG=$HOME/.config/ghostty/config
+THEMES_DIR=/usr/share/ghostty/themes
 
-STYLES=("GHOSTTY THEMES LIST" "Retro" "Twilight" "GruvboxLight" "Jackie Brown" "coffee_theme" "tokyonight-day")
+STYLES=()
+while IFS= read -r -d $'\0' theme; do
+  STYLES+=("$(basename "$theme")")
+done < <(find "$THEMES_DIR" -maxdepth 1 -type f -print0 | sort -z)
 
-MENU=$(printf "%s\n" "${STYLES[@]}")
+CHOICE=$(printf '%s\n' "${STYLES[@]}" | wofi --dmenu --prompt "Ghostty Theme")
 
-# Show the menu and get user choice
-CHOICE=$(echo "$MENU" | wofi --dmenu --prompt "Ghostty Theme List")
-
-# If no choice or the header is selected, exit or rerun menu
-if [ -z "$CHOICE" ] || [[ "$CHOICE" == "GHOSTTY THEMES LIST" ]]; then
-  exec "$HOME/dotfiles/scripts/wofi/menus.sh"
-  exit
+if [ -n "$CHOICE" ]; then
+  inotify-send --app-name=Ghostty "Changing theme to $CHOICE"
+  sed -i "s/^theme *=.*/theme = $CHOICE/g" "$CONFIG"
 fi
 
-notify-send --app-name=Ghostty "Changing theme to $CHOICE"
-
-sed -i -E "s/^theme *= *.*/theme = $CHOICE/" "$CONFIG"

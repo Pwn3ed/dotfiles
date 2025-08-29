@@ -1,6 +1,7 @@
 # === AUR PACKAGES ===
 yay_pkgs=(
   mongodb-bin
+  neofetch
   hyprland
   hyprpaper
   waybar
