@@ -14,6 +14,8 @@ essentials=(
   # iptables-nft # Conflict
   intel-media-driver # intel gpu
   pacman-contrib
+  plantuml
+  graphviz
 )
 
 # === UTILITIES ===
