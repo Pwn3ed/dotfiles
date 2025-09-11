@@ -32,3 +32,10 @@ setopt HIST_IGNORE_SPACE
 
 # Default editor
 export EDITOR="nvim"
+
+export GPG_TTY=$(tty)
+
+export TMUX_THEME="light"
+
+# Open man with nvim
+export MANPAGER="nvim +Man!"

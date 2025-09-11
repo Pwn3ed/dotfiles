@@ -1,5 +1,6 @@
 # === AUR PACKAGES ===
 yay_pkgs=(
+  opencode-bin
   mongodb-bin
   neofetch
   hyprland

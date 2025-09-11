@@ -30,6 +30,7 @@ utilities=(
   tldr
   xdg-desktop-portal-hyprland
   imagemagick # image render on terminal
+  neomutt # email client
 )
 
 # === FONTS ===
@@ -60,6 +61,7 @@ gui_apps=(
   obs-studio
   discord
   obsidian
+  gnome-disk-utility
 )
 
 # === BATTERY/POWER ===

@@ -1,0 +1,53 @@
+# vim: filetype=muttrc
+#
+# Auth Command:
+# python3 /usr/share/neomutt/oauth2/mutt_oauth2.py \
+#  --authorize \      
+#  --provider google \                
+#  --client-id YOUR_CLIENT_ID \
+#  --client-secret YOUR_CLIENT_SECRET \
+#  --email your.user@gmail.com \
+#  --authflow authcode \
+#  --encryption-pipe "gpg --encrypt --recipient your.user@gmail.com" \
+#  ~/.config/neomutt/oauth2_tokens.gpg
+
+# --- Basic identity ---
+set realname = "Your Name"
+set from = "your.user@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+# --- IMAP settings ---
+set imap_user = "your.user@gmail.com"
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set trash = "+[Gmail]/Trash"
+
+# --- SMTP settings ---
+set smtp_url = "smtp://your.user@gmail.com@smtp.gmail.com:587/"
+
+# --- Authentication ---
+set imap_authenticators = "xoauth2"
+set smtp_authenticators = "xoauth2"
+
+# --- OAuth2 Refresh Command ---
+set imap_oauth_refresh_command = "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py \
+  --provider google \
+  --email your.user@gmail.com \
+  --decryption-pipe 'gpg --decrypt' \
+  ~/.config/neomutt/oauth2_tokens.gpg"
+
+# --- OAuth2 Refresh Command ---
+set smtp_oauth_refresh_command = "python3 /usr/share/neomutt/oauth2/mutt_oauth2.py \
+  --provider google \
+  --email your.user@gmail.com \
+  --decryption-pipe 'gpg --decrypt' \
+  ~/.config/neomutt/oauth2_tokens.gpg"
+
+# --- UI niceties ---
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Trash
