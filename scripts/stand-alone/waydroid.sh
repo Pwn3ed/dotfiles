@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # https://wiki.archlinux.org/title/Waydroid
 
 yay -S waydroid
