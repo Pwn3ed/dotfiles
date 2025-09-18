@@ -8,7 +8,7 @@ read -r -p "Enter your choice (or press Enter for ghostty): " input
 
 case "$input" in
   "yes"|"y"|""|1)
-    sudo pacman -S --needed --noconfirm ghostty
+    yay -S --needed --noconfirm ghostty
     ;;
   2)
     sudo pacman -S --needed --noconfirm alacritty
