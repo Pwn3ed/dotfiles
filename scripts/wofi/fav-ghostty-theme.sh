@@ -5,7 +5,7 @@ CONFIG="$HOME/.config/ghostty/config"
 i want to get all the files names inside this dir and use it as choices in my bash script
 ls /usr/share/ghostty/themes
 
-STYLES=("GHOSTTY THEMES LIST" "Retro" "Twilight" "GruvboxLight" "Jackie Brown" "coffee_theme" "tokyonight-day")
+STYLES=("GHOSTTY THEMES LIST" "Retro" "Twilight" "Gruvbox Light" "Iceberg Light" "Jackie Brown" "Coffee Theme" "TokyoNight Day")
 
 MENU=$(printf "%s\n" "${STYLES[@]}")
 
