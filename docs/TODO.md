@@ -4,11 +4,11 @@
 
 - [ ] implement zoom on mouse toggle script
 
-- [ ] Organize dev directories to .development/
-    - [ ] go/
-    - [ ] Unity/
-    - [ ] tmp/
-    - [ ] flutter/
+- [x] Organize dev directories to .development/
+    - [x] go/
+    - [x] Unity/
+    - [x] tmp/
+    - [x] flutter/
 - [ ] Organize config directories to .config/
     - [ ] .cargo/
     - [ ] .zshrc.d/
@@ -23,3 +23,5 @@
 - [x] add opencode
 - [x] add terminal-based mail (neomutt)
 - [ ] add terminal-based music player (with ytb support)
+
+- [ ] animated wallpapers (yay -S mpvpaper)

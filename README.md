@@ -42,4 +42,5 @@
 
 * Important Links
 
-- [Arch System Maintenance](https://wiki.archlinux.org/title/System_maintenance)
+* [Arch System Maintenance](https://wiki.archlinux.org/title/System_maintenance)
+* [Nerd Font Icons](https://www.nerdfonts.com/cheat-sheet)
