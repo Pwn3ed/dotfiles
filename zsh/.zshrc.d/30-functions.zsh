@@ -2,8 +2,7 @@
 
 # cd fzf
 cdf() {
-  cd
-  dir=$(find . -type d -not -path '*/\.*' 2>/dev/null | fzf)
+  dir=$(fd --type d --hidden --exclude .git --exclude node_modules | fzf)
   [ -n "$dir" ] && cd "$dir"
 }
 

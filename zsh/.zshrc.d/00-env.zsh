@@ -30,6 +30,13 @@ setopt HIST_VERIFY
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 
+# Using fd
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude node_modules"
+
+# Or with ripgrep
+# export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/*'"
+
+
 # Default editor
 export EDITOR="nvim"
 
