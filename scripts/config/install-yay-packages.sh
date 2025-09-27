@@ -1,16 +1,15 @@
 # === AUR PACKAGES ===
 yay_pkgs=(
-  opencode-bin
-  mongodb-bin
-  neofetch
   hyprland
   hyprpaper
   waybar
   wlogout-git
-  dolphin
-  # unityhub
+  neofetch
+  opencode-bin # AI Agent
+  dolphin # File Manager
+  neovim-nightly-bin # File Editor (terminal based)
   # android-studio
-  neovim-nightly-bin
+  # geforcenow-electron # Geforce Now Interface
 )
 
 echo "==> Installing AUR packages..."

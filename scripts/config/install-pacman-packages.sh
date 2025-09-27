@@ -31,6 +31,7 @@ utilities=(
   xdg-desktop-portal-hyprland
   imagemagick # image render on terminal
   neomutt # email client
+  traceroute
 )
 
 # === FONTS ===
