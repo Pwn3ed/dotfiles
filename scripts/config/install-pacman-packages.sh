@@ -16,11 +16,11 @@ essentials=(
   pacman-contrib
   plantuml
   graphviz
+  wayland-utils
 )
 
 # === UTILITIES ===
 utilities=(
-  # neofetch # FIX: Not found
   htop # service manager
   github-cli # gh
   bat # file viewer
