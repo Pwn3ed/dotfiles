@@ -47,5 +47,7 @@ export TMUX_THEME="light"
 # set rust env_logger crate to info
 export RUST_LOG="info"
 
-# Open man with nvim
+# Open with neovim
 export MANPAGER="nvim +Man!"
+
+export GIT_PAGER=bat
