@@ -24,7 +24,7 @@ hist() {
 # nvim fzf
 nvimf() {
   local file
-  file=$(fzf --preview='bat --style=numbers --color=always --line-range :300 {}')
+  file=$(fd --hidden --exclude .git --exclude node_modules | fzf --preview='bat --style=numbers --color=always --line-range :300 {}')
   [ -n "$file" ] && nvim "$file"
 }
 
