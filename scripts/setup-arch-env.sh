@@ -5,8 +5,8 @@ set -e
 echo "==> Updating system..."
 sudo pacman -Syu --noconfirm
 
-echo "==> Installing yay..."
-"$HOME/dotfiles/scripts/stand-alone/yay.sh"
+# echo "==> Installing yay..."
+# "$HOME/dotfiles/scripts/stand-alone/yay.sh"
 
 echo "==> Installing basic pacman packages..."
 "$HOME/dotfiles/scripts/config/install-pacman-packages.sh"

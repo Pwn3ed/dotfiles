@@ -19,5 +19,5 @@ mkdir -p $HOME/.local/bin
 mv zig-out/bin/ghostty $HOME/.local/bin/ghostty-build
 
 cd ..
-
-rm -rf ghostty
+#
+# rm -rf ghostty
