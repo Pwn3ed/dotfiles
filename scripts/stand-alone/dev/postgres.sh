@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -Syu --noconfirm
+# sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm postgresql
 
 if ! systemctl is-active --quiet postgresql; then

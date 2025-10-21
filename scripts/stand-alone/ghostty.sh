@@ -8,6 +8,6 @@ cd ghostty
 
 zig build -Doptimize=ReleaseFast
 
-cd ..
+# cd ..
 
-rm -rf ghostty
+# rm -rf ghostty
